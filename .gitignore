@@ -19,3 +19,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+; MySQLへEC2から接続するためのenv設定
+/.env

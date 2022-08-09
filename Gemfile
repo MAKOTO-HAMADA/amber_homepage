@@ -2,11 +2,14 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+
+# gem 'rails', '~> 5.0.0'   # バージョンアップするためコメントアウト... 8/9
+gem 'rails', '~> 7.0.3.1'   # 現時点最新のRailsにアップグレード     ... 8/9
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,3 +49,20 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+## ActiveStorageのサードパーティーソフトウェア
+# ImageMajick（画像の変形や、解析等）... 8/9
+gem 'rmagick'
+# 画像の分析や画像加工               ... 8/9
+gem "image_processing", ">= 1.2"
+
+## カリキュラム（デプロイを学ぼう_1章）
+# 「dotenv-rails：環境変数」、「mysql2：MySQL(データベース)を使用する為」... 8/9
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
