@@ -63,6 +63,8 @@ group :production do
   gem 'mysql2'
 end
 
+## カリキュラム（デプロイを学ぼう_1章）
+# カリキュラムには特に内容の記載はなし... 8/9
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
