@@ -4,11 +4,35 @@
     <title>Amber</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
-    <%= yield %>
+    
+    <header>
+      <!-- ログイン機能追加... 8/11 -->
+      <% if customer_signed_in? %>
+        <li>メールアドレス： <%= current_user.email %></li>
+        <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+      <% elsif admin_signed_in? %>
+        
+        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+      <% else %>
+        <li><%#= link_to '商品一覧', customer_items_path %></li>
+        <li><%= link_to "新規登録", new_customer_registration_path %></li>
+        <li><%= link_to "ログイン", new_customer_session_path %></li>
+      <% end %>
+    </header>
+    
+    <main>
+      <%= yield %>
+      <a href='#' class="btn btn-primary"> aaa</a>
+    </main>
+    
+    <footer>
+      
+    </footer>
   </body>
+  
 </html>

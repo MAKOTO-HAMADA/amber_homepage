@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+## adominのログイン情報... 
+# $ rails c → Admin.allで確認可能（パスワードは不可）
+Admin.create!(
+   email: 'm1988kyc@gmail.com',
+   password: 'Mkyc1988'
+)
