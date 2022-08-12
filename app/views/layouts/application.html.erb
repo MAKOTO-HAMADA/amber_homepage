@@ -29,6 +29,7 @@
         <li><%= link_to '問合せジャンル一覧',  admin_contact_genres_path %></li>
         <li><%= link_to "ログアウト",          destroy_admin_session_path, method: :delete %></li>
       <% else %>
+        <li><%= link_to 'ロゴ',     root_path %></li>
         <li><%= link_to '商品一覧', items_path %></li>
         <li><%= link_to "新規登録", new_customer_registration_path %></li>
         <li><%= link_to "ログイン", new_customer_session_path %></li>
@@ -40,7 +41,26 @@
     </main>
     
     <footer>
-      
+      <!-- フッター機能追加... 8/12 -->
+      <% if customer_signed_in? %>
+        <li>メールアドレス： <%= current_user.email %></li>
+        <li><%= link_to 'ロゴ',        root_path %></li>
+        <li><%= link_to 'マイページ',  mypage_path %></li>
+        <li><%= link_to '商品一覧',    items_path %></li>
+        <li><%= link_to 'カート',      cart_items_path %></li>
+        <li><%= link_to '問合せ',      new_contact_path %></li>
+      <% elsif admin_signed_in? %>
+        <li><%= link_to '注文履歴一覧',        admin_path %></li>
+        <li><%= link_to '顧客一覧',            admin_customers_path %></li>
+        <li><%= link_to '商品一覧',            admin_items_path %></li>
+        <li><%= link_to '商品ジャンル一覧',    admin_item_genres_path %></li>
+        <li><%= link_to '問合せ一覧',          admin_contacts_path %></li>
+        <li><%= link_to '問合せジャンル一覧',  admin_contact_genres_path %></li>
+      <% else %>
+        <li><%= link_to 'ロゴ',     root_path %></li>
+        <li><%= link_to '商品一覧', items_path %></li>
+        <li><%= link_to "新規登録", new_customer_registration_path %></li>
+      <% end %>
     </footer>
   </body>
   
