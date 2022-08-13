@@ -1,2 +1,8 @@
-<h1>Admin::ItemGenres#edit</h1>
-<p>Find me in app/views/admin/item_genres/edit.html.erb</p>
+<h1>商品ジャンル編集</h1>
+
+<%= form_with model: @item_genre, url: admin_edit_item_genre_path(@item_genre.id), method: :patch do |f| %>
+
+  <%= f.text_field :name %><br />
+  <%= f.submit '保存' %>
+  
+<% end %>

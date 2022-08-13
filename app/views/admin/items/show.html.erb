@@ -1,2 +1,11 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "200x200" %><br/>
+<% else %>
+    <%= image_tag 'no_image', size: "200x200" %><br/>
+<% end %>
+
+<%= @item.name %><br/>
+
+<%= link_to "編集へ", edit_admin_item_path(@item.id) %>

@@ -2,6 +2,11 @@
 
 <p>一覧表示 + ？</p>
 <% @items.each do |item| %>
+    <% if item.image.attached? %>
+        <%= image_tag item.image, size: "200x200" %><br/>
+    <% else %>
+        <%= image_tag 'no_image', size: "200x200" %><br/>
+  　<% end %>
     <%= link_to item.name, admin_item_path(item.id) %><br/>
 <% end %>
 

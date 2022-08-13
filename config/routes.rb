@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :contact_genres,  only: [:index, :create, :edit, :update]
     resources :customers,       only: [:index, :show, :edit, :update]
     resources :items,           except: [:destroy]
-    resources :item_genres,     only: [:index, :create, :edit, :update]
-
+    resources :item_genres,     only: [:index, :create, :edit]
+    patch 'item_genres/:id/edit' => 'item_genres#update', as: 'edit_item_genre'
   end
   
   # devise_for :customers   自動生成... 8/10
