@@ -1,2 +1,15 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>商品登録ページ</h1>
+
+<!-- 8/12 -->
+<%= form_with model: @item, url: admin_items_path do |f| %>
+    <%= f.select :item_genre_id, @item_genres %><br/> <!-- 8/13 -->
+    <%= f.text_field :name %><br/>
+    <%= f.text_area  :introduction %><br/>
+    <%= f.text_field :price %><br/>
+    <%= f.number_field :quantity_of_sales %><br/>
+    <%= f.radio_button :sales_status, :true %>
+    <%= f.label :sales_status, "販売中" %><br/>
+    <%= f.radio_button :sales_status, :false %>
+    <%= f.label :sales_status, "販売停止中" %><br/>
+    <%= f.submit "新規登録" %>
+<% end %>

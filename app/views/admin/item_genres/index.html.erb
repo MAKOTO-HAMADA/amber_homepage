@@ -1,2 +1,14 @@
-<h1>Admin::ItemGenres#index</h1>
-<p>Find me in app/views/admin/item_genres/index.html.erb</p>
+<h1>商品ジャンル一覧</h1>
+
+<!-- 8/13 -->
+<p>一覧表示 + 編集リンク</p>
+<% @item_genres.each do |item_genre| %>
+    <%= link_to item_genre.name, edit_admin_item_genre_path(item_genre.id) %>
+<% end %>
+
+<p>登録フォーム</p>
+<%= form_with model: @item_genre, url: admin_item_genres_path do |f| %>
+    <%= f.text_field :name %><br/>
+    <%= f.text_area  :introduction %><br/>
+    <%= f.submit     "新規登録" %>
+<% end %>
