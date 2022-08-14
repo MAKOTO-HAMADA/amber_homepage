@@ -1,2 +1,5 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h1>カート</h1>
+
+<% @cart_items.each do |cart_item| %>
+    <%= cart_item.quantity_by_type %><br/>
+<% end %>

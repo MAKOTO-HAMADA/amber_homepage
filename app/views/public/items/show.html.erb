@@ -1,2 +1,15 @@
 <h1>商品詳細</h1>
 
+
+<%= @item.name %><br/>
+<%= @item.item_genre.name %><br/>
+
+<!-- ジャンル検索実装(render) -->
+
+<% if %>
+<%= form_with model: @cart_item do |f| %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %><br/>
+    <%= f.hidden_field :item_id, :value => @item.id %><br/>
+    <%= f.select :quantity_by_type, *[1..3] %><br/>
+    <%= f.submit "カートに追加する" %>
+<% end %>

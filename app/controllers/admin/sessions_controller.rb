@@ -21,11 +21,11 @@ class Admin::SessionsController < Devise::SessionsController
   protected   #「外部から隠蔽」+「レシーバーを仲間が利用する」... 8/11
   
   def after_sign_in_path_for(resource)
-    root_path
+    admin_path
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    new_admin_session_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
