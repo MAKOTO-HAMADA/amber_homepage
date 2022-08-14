@@ -10,7 +10,6 @@
     <%= f.label "姓" %>
     <%= f.text_field :last_name, autofocus: true, maxlength: "8" %>
   </div>
-  
   <!-- 名 -->
   <div class="field">
     <%= f.label "名" %>
@@ -21,52 +20,46 @@
     <%= f.label "姓-カナ" %>
     <%= f.text_field :last_name_kana, maxlength: "8" %>
   </div>
-  
   <!-- 名-カナ -->
   <div class="field">
     <%= f.label "名-カナ" %>
     <%= f.text_field :first_name_kana, maxlength: "8" %>
   </div>
-  
+  <!-- メール-->
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
-  
+  <!-- 電話番号 -->
+  <div class="field">
+    <%= f.label "電話番号" %>
+    <%= f.text_field :telephone_number %>
+  </div>
   <!-- 郵便番号 -->
   <div class="field">
     <%= f.label "郵便番号" %>
     <%= f.text_field :postal_code %>
   </div>
-  
   <!-- 都道府県 -->
   <div class="field">
     <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name %>
   </div>
-  
   <!-- 市町村 -->
   <div class="field">
     <%= f.label "市町村" %>
     <%= f.text_field :city %>
   </div>
-  
   <!-- 番地 -->
   <div class="field">
     <%= f.label "番地" %>
     <%= f.text_field :street %>
   </div>
-  
   <!-- その他住所 -->
   <div class="field">
-    <%= f.label "その他住所" %>
+    <%= f.label "建物名+部屋番号" %>
     <%= f.text_field :other_address %>
   </div>
-  
-  <!-- 電話番号 -->
-  <div class="field">
-    
-  </div>
-  
+  <!-- パスワード-->
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -74,14 +67,10 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
+  <!-- パスワード確認 -->
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  
-  <div class="field">
-    
   </div>
 
   <div class="actions">

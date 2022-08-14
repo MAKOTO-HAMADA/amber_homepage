@@ -17,7 +17,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :city,               null: false
       t.string :street,             null: false
       t.string :other_address       # 番地以降の住所がない場合もあるため、null: falseはつけない
-      t.string :address,            null: false
       t.string :telephone_number,   null: false
       t.boolean :unsubscribe_flag,  null: false, default: false
 

@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2022_08_12_133740) do
     t.string "city", null: false
     t.string "street", null: false
     t.string "other_address"
-    t.string "address", null: false
     t.string "telephone_number", null: false
     t.boolean "unsubscribe_flag", default: false, null: false
     t.string "reset_password_token"

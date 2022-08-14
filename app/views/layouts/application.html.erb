@@ -3,7 +3,8 @@
   <head>
     <title>Amber</title>
     <%= csrf_meta_tags %>
-
+    
+    <!-- -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -13,7 +14,7 @@
     <header>
       <!-- ログイン機能追加... 8/11 -->
       <% if customer_signed_in? %>
-        <li>メールアドレス： <%= current_user.email %></li>
+        <li>メールアドレス： <%= current_customer.email %></li>
         <li><%= link_to 'ロゴ',        root_path %></li>
         <li><%= link_to 'マイページ',  mypage_path %></li>
         <li><%= link_to '商品一覧',    items_path %></li>
@@ -43,7 +44,7 @@
     <footer>
       <!-- フッター機能追加... 8/12 -->
       <% if customer_signed_in? %>
-        <li>メールアドレス： <%= current_user.email %></li>
+        <li>メールアドレス： <%= current_customer.email %></li>
         <li><%= link_to 'ロゴ',        root_path %></li>
         <li><%= link_to 'マイページ',  mypage_path %></li>
         <li><%= link_to '商品一覧',    items_path %></li>
