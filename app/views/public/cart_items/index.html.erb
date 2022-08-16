@@ -1,5 +1,15 @@
 <h1>カート</h1>
 
 <% @cart_items.each do |cart_item| %>
-    <%= cart_item.quantity_by_type %><br/>
+    <% if cart_item.customer_id == current_customer.id %>
+        <%= form_with model: cart_item do |f| %>
+            <%= f.select :quantity_by_type, *[1..5] %>
+            <%= f.submit "変更を保存" %>
+            <%= link_to "削除", cart_item_path(cart_item.id), method: :delete %><br/>    
+        <% end %>
+        
+    <% end %>
 <% end %>
+
+<%= link_to "カート全部削除", destroy_all_cart_items_path, method: :delete %><br/>
+<%= link_to "買い物を続ける", items_path%><br/>

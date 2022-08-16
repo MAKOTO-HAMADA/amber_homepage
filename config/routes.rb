@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions:      'public/sessions'
   }
-
+  
   scope module: :public do   # パブリックルーティング... 8/12
     root 'homes#top'
     
@@ -43,8 +43,14 @@ Rails.application.routes.draw do
     # 商品
     resources :items,              only: [:index, :show]
     # カート
-    resources :cart_items,         only: [:index, :create, :update, :destroy]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+    resources :cart_items,         only: [:index, :create, :update, :destroy] do
+      collection do
+        delete :destroy_all
+      end
+      # delete(HTTPメソッド)が[destroyアクション]と[destroy_allアクション]の２つで重複する為
+      # URLで呼び出す際どちらも[cart_items/:id]で呼び出され[destroyアクション]だけ反応するようになる
+      # その為[collectionメソッド]でdestroy_allの方を個別で指定する... 8/16
+    end
     # 注文
     resources :orders,             only: [:new, :index, :create, :show]
     post 'orders/confirm' => 'orders#confirm'
