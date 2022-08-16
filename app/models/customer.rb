@@ -9,4 +9,9 @@ class Customer < ApplicationRecord
   validates :city,            presence: true
   validates :street,          presence: true
   
+  # 8/16
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+  
 end

@@ -1,2 +1,8 @@
-<h1>Public::Customer#show</h1>
-<p>Find me in app/views/public/customer/show.html.erb</p>
+<!-- 8/16 -->
+<h1>マイページ</h1>
+
+<%= @customer.full_name %><br/>
+
+<%= link_to "編集", edit_information_path %><br/>
+<%= link_to "注文履歴", orders_path %><br/>
+<%= link_to "配送先", shipping_addresses_path %><br/>
