@@ -1,2 +1,83 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h1>会員情報 編集ページ</h1>
+
+<%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+  
+  <!-- 姓 -->
+  <div class="field">
+    <%= f.label "姓" %>
+    <%= f.text_field :last_name, autofocus: true, maxlength: "8" %>
+  </div>
+  <!-- 名 -->
+  <div class="field">
+    <%= f.label "名" %>
+    <%= f.text_field :first_name, maxlength: "8" %>
+  </div>
+  <!-- 姓-カナ -->
+  <div class="field">
+    <%= f.label "姓-カナ" %>
+    <%= f.text_field :last_name_kana, maxlength: "8" %>
+  </div>
+  <!-- 名-カナ -->
+  <div class="field">
+    <%= f.label "名-カナ" %>
+    <%= f.text_field :first_name_kana, maxlength: "8" %>
+  </div>
+  <!-- メール-->
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+  <!-- 電話番号 -->
+  <div class="field">
+    <%= f.label "電話番号" %>
+    <%= f.text_field :telephone_number %>
+  </div>
+  <!-- 郵便番号 -->
+  <div class="field">
+    <%= f.label "郵便番号" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <!-- 都道府県 -->
+  <div class="field">
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name %>
+  </div>
+  <!-- 市町村 -->
+  <div class="field">
+    <%= f.label "市町村" %>
+    <%= f.text_field :city %>
+  </div>
+  <!-- 番地 -->
+  <div class="field">
+    <%= f.label "番地" %>
+    <%= f.text_field :street %>
+  </div>
+  <!-- その他住所 -->
+  <div class="field">
+    <%= f.label "建物名+部屋番号" %>
+    <%= f.text_field :other_address %>
+  </div>
+  <!-- パスワード-->
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <!-- パスワード確認 -->
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <!-- 退会フラグ -->
+  <div class="field">
+    <%= f.label :"退会フラグ" %><br />
+    <%= f.radio_button :unsubscribe_flag, true %>退会
+    <%= f.radio_button :unsubscribe_flag, false %>入会
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存" %>
+  </div>
+<% end %>

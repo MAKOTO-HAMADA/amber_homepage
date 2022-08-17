@@ -1,2 +1,7 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h1>会員 詳細ページ</h1>
+
+<%= @customer.full_name %>
+<%= @customer.unsubscribe_flag %><br/>
+
+<%= link_to "編集ページへ", edit_admin_customer_path(@customer.id) %><br/>
+<%= link_to "注文履歴", admin_path %><br/>
