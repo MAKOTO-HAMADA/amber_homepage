@@ -1,0 +1,34 @@
+<h1>注文情報 確認ページ</h1>
+
+<%= @order.name %><br/>
+<%= @order.postal_code %><br/>
+<%= @order.address %><br/>
+
+<% current_customer.cart_items.each do |cart| %>
+    <% item = cart.item %>
+        
+        
+    <%= item.name %>
+    <%= item.price %>
+    <%= cart.quantity_by_type %>
+    <%= cart.subtotal %><br/>
+        
+    <% @order.payment_of_total += cart.subtotal %>
+<% end %>
+    
+<%= @order.payment_of_total %>
+<%= billing_total = @order.payment_of_total + 800 %>
+
+<%= form_with model: @order do |f| %>
+    <%= f.hidden_field :postal_code, value:  @order.postal_code %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :name, value: @order.name %>
+    <%= f.hidden_field :postage, value: 800 %>
+    <%= f.hidden_field :payment_of_total, value: @order.payment_of_total %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.submit "注文を確定する" %>
+<% end %>
+
+
+<!-- 自作メソッド一覧 -->
+<!-- CartItemモデル、subtotal：単価 * 数量 -->

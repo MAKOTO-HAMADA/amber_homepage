@@ -1,6 +1,10 @@
 class CartItem < ApplicationRecord
     
-    # 8/
     belongs_to :item
+    belongs_to :customer
+    
+    def subtotal
+        self.item.price * self.quantity_by_type 
+    end
     
 end

@@ -85,6 +85,8 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -244,6 +246,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  enum_help
   image_processing (>= 1.2)
   jbuilder (~> 2.5)
   jp_prefecture

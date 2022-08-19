@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do   # アドミンルーティング... 8/12
     get '' => 'homes#top'
     resources :orders,          only: [:show, :update] do
-      resources :order_details, only: [:update]
+      resources :order_histories, only: [:update]
     end
     resources :contacts,        only: [:index, :show]
     resources :contact_genres,  only: [:index, :create, :edit, :update]
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   
   scope module: :public do   # パブリックルーティング... 8/12
     root 'homes#top'
-    
     # 会員
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get   'customers/mypage'           => 'customers#show',        as: 'mypage'
@@ -52,9 +51,12 @@ Rails.application.routes.draw do
       # その為[collectionメソッド]でdestroy_allの方を個別で指定する... 8/16
     end
     # 注文
-    resources :orders,             only: [:new, :index, :create, :show]
+    resources :orders,             only: [:new, :index, :create, :show] do
+      collection do
+        get :complete
+      end
+    end
     post 'orders/confirm' => 'orders#confirm'
-    get 'orders/complete' => 'orders#complete'
     # 問合せ
     resources :contacts,           only: [:new, :create]
     post 'contacts/confirm' => 'contacts#confirm'

@@ -59,6 +59,7 @@ gem 'jp_prefecture'   # 都道府県コードから都道府県名を変換... 8
 ## ActiveStorageのサードパーティーソフトウェア
 gem 'rmagick'                     # ImageMajick（画像の変形や、解析等）... 8/9
 gem "image_processing", ">= 1.2"  # 画像の分析や画像加工... 8/9
+gem "enum_help"                   # enum機能実装... 8/18
 
 ## カリキュラム（デプロイを学ぼう_1章）
 # 「dotenv-rails：環境変数」、「mysql2：MySQL(データベース)を使用する為」... 8/9

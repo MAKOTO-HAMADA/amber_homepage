@@ -18,5 +18,8 @@ module Amber
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    # Railsアプリケーションを国際化(i18n)という仕組み使って日本語対応させる
+    config.i18n.default_locale = :ja
   end
 end

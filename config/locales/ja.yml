@@ -1,0 +1,14 @@
+# enumで使用するため[文字列]と[日本語]の紐付け
+  ja:
+    enums:
+      order:
+        payment_method:
+            credit_card:      "クレジットカード"
+            transfer:         "銀行振込"
+            cashless:         "キャッシュレス"
+            cash_on_delivery: "代金引換"
+        order_status:
+            waiting_for_payment: "支払待ち"
+            paid:                "支払済"
+            preparing_to_ship:   "発送準備中"
+            shipped:             "発送済"
