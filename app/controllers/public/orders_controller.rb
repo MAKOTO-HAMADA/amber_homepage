@@ -18,7 +18,9 @@ class Public::OrdersController < ApplicationController
   # substitute_hipping_information：配送先情報を代入する
   
   def create
+    # binding.pry
     order = Order.new(order_params)
+    order.customer_id = current_customer.id
     order.save
     CartItem.where(customer_id: current_customer.id).destroy_all
     redirect_to complete_orders_path

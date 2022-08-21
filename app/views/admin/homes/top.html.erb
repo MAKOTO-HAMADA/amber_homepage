@@ -1,2 +1,11 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>注文履歴 一覧/トップページ</h1>
+
+<!-- 全会員の[注文履歴] -->
+<!-- ＜注文日時＞　をクリック -->
+
+<% @orders.each do |order| %>
+    <%= link_to order.created_at, admin_order_path(order.id) %>
+    <%= order.name %>
+    <%= order.payment_method_i18n %>
+    <%= order.order_status_i18n %><br/>
+<% end %>
