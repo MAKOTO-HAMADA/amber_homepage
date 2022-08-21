@@ -4,4 +4,11 @@
 <!-- ＜注文者名＞ボタンをクリック -->
 <!--［注文ステータス］変更のドロップダウン -->
 <!-- ＜注文ステータス変更＞ボタンをクリック -->
+<%= flash[:notice] %><br/>
 
+<%= link_to @order.name, admin_customer_path(@order.id) %>
+
+<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+    <%= f.submit "ステータス変更" %>
+<% end %>
