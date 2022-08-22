@@ -1,2 +1,6 @@
-<h1>Admin::ContactGenres#edit</h1>
-<p>Find me in app/views/admin/contact_genres/edit.html.erb</p>
+<h1>問合せジャンル 編集ページ</h1>
+
+<%= form_with model: @contact_genre, url: admin_contact_genre_path(@contact_genre.id), method: :patch do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更" %>
+<% end %>

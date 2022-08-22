@@ -1,7 +1,27 @@
 class Public::ContactsController < ApplicationController
+  
   def new
+    @contact = Contact.new
+    @contact_genres = ContactGenre.all.map {|genre| [genre.name, genre.id]}
   end
-
+  
+  def confirm
+    @contact = Contact.new(contact_params)
+  end
+  
+  def create
+    contact = Contact.new(contact_params)
+    contact.save
+    redirect_to contacts_complete_path
+  end
+  
   def complete
   end
+  
+  private
+  
+  def contact_params
+    params.require(:contact).permit(:customer_id, :genre_id, :name, :email, :inquiry)
+  end
+  
 end
