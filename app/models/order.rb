@@ -10,10 +10,18 @@ class Order < ApplicationRecord
     # config/application.rb:21 で[文字列]を[日本語]に変換する
     # ※[日本語]と[数字]を直接紐付けるとActiveRecord::Enumの一部メソッドが使えなくなる状態になるため
     
-    ## 配送先情報を代入するメソッド
-    def substitute_hipping_information
-        self.postal_code = self.customer.postal_code
-        self.address     = self.customer.full_address
-        self.name        = self.customer.full_name
+    ## resourceの配送先情報を代入するメソッド
+    def get_shipping_informations_from(resource)
+        class_name = resource.class.name
+        if class_name == "Customer"
+            self.postal_code = resource.postal_code
+            self.address     = resource.full_address
+            self.name        = resource.full_name
+        elsif class_name == "ShippingAddress"
+            self.postal_code = resource.postal_code
+            self.address     = resource.address
+            self.name        = resource.name
+        end
     end
+    
 end

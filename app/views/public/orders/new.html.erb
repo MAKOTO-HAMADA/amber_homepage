@@ -1,12 +1,5 @@
 <h1>注文情報 入力ページ</h1>
 
-<!--［支払方法］　をラジオボタン -->
-
-<!--［届け先］を選択（自分の住所／配送先／［新規住所］の入力）-->
-
-<!-- ＜確認画面＞　ボタンをクリック -->
-
-
 <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
 
     <!--［支払方法］　をラジオボタン -->
@@ -22,13 +15,18 @@
     <!--［届け先］を選択（自分の住所／配送先／［新規住所］の入力）-->
     <%= radio_button_tag 'select_address', 0, checked: true %>ご自身の住所<br/>
     〒<%= current_customer.postal_code%><%= current_customer.full_address %><br/>
+    
     <%= radio_button_tag 'select_address', 1 %>登録済住所から選択<br/>
+    <%= select_tag 'adress_id', options_for_select(ShippingAddress.all.map{|a| ["〒#{a.postal_code} #{a.address}", a.id]}) %><br/>
     
     <%= radio_button_tag 'select_address', 2 %>新しいお届け先<br/>
-    <%= f.text_field :postal_code %><br/>
-    <%= f.text_field :address %><br/>
-    <%= f.text_field :postage %><br/>
+    郵便番号：<%= f.text_field :postal_code %><br/>
+    住所　　：<%= f.text_field :address %><br/>
+    宛名　　：<%= f.text_field :name %><br/>
     
     <%= f.submit "確認画面へ" %>
     
 <% end %>
+
+<%= debug ShippingAddress.all.map{|a| [a.postal_code, a.address, a.name]} %><br/>
+<%= debug options_for_select(ShippingAddress.all.map{|a| [a.address, a.id]}) %><br/>

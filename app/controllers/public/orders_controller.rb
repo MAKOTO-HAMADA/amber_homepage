@@ -7,18 +7,18 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     if params[:select_address] == '0'
-      @order.substitute_hipping_information
+      @order.get_shipping_informations_from(current_customer)
     elsif params[:select_address] == '1'
-      # 登録配送先を記入
+      @shipping_address = ShippingAddress.find(params[:adress_id])
+      @order.get_shipping_informations_from(@shipping_address)
     elsif params[:select_address] == '2'
       # 新規入力
     end
   end
   ## 自作メソッド
-  # substitute_hipping_information：配送先情報を代入する
+  # get_shipping_informations_from(resource)：配送先情報を代入する
   
   def create
-    # binding.pry
     order = Order.new(order_params)
     order.customer_id = current_customer.id
     order.save
