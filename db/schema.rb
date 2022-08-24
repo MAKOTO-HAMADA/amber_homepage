@@ -70,12 +70,14 @@ ActiveRecord::Schema.define(version: 2022_08_17_203252) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "contat_genre_id", null: false
     t.string "name", null: false
     t.string "email", null: false
     t.text "inquiry", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["contat_genre_id"], name: "index_contacts_on_contat_genre_id"
+    t.index ["customer_id"], name: "index_contacts_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|

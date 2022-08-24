@@ -2,6 +2,7 @@
 
 <% @contact_genres.each do |genre| %>
     <%= link_to genre.name, edit_admin_contact_genre_path(genre.id) %>
+    <%= genre.id %><br/>
 <% end %>
 
 <%= form_with model: @contact_genre, url: admin_contact_genres_path do |f| %>

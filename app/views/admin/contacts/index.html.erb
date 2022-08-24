@@ -1,2 +1,8 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<h1>問合せ 一覧ページ</h1>
+
+<!-- ・全会員の［問合せ履歴］-->
+<!-- ＜問合せ日時＞　をクリック -->
+
+<%= @contacts.each do |contact| %>
+    <%= contact.id %>
+<% end %>

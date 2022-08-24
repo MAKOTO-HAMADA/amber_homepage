@@ -11,6 +11,7 @@ class Public::ContactsController < ApplicationController
   
   def create
     contact = Contact.new(contact_params)
+    contact.customer_id = current_customer.id
     contact.save
     redirect_to contacts_complete_path
   end
@@ -21,7 +22,7 @@ class Public::ContactsController < ApplicationController
   private
   
   def contact_params
-    params.require(:contact).permit(:customer_id, :genre_id, :name, :email, :inquiry)
+    params.require(:contact).permit(:customer_id, :contat_genre_id, :name, :email, :inquiry)
   end
   
 end

@@ -2,14 +2,14 @@
 
 <!-- 画面で確認する内容 -->
 <%= @contact.customer_id %><br/>
-<%= @contact.genre_id %><br/>
+<%= @contact.contat_genre_id %><br/>
 <%= @contact.name %><br/>
 <%= @contact.email %><br/>
 <%= @contact.inquiry %><br/>
 
 <!-- createアクションに渡す内容 -->
 <%= form_with model: @contact, url: contacts_path, method: :post do |f| %>
-    <%= f.hidden_field :genre_id, value: @contact.genre_id %>
+    <%= f.hidden_field :contat_genre_id, value: @contact.contat_genre_id %>
     <%= f.hidden_field :name, value: @contact.name %>
     <%= f.hidden_field :email, value: @contact.email %>
     <%= f.hidden_field :inquiry, value: @contact.inquiry %>
