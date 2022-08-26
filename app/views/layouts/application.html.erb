@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
 
   <body>
@@ -17,71 +18,71 @@
         <%= link_to 'amber', root_path, class: "display-3 text-dark font-weight-bold mx-3" %>
         
         <!-- [表示切り替えボタン]の設定 -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
         <!-- [表示切り替えボタン]の内容 -->
-        <div class="collapse navbar-collapse ml-3" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse ml-3 mt-3" id="navbarSupportedContent">
           
           <!-- 各種リンク -->
           <% if customer_signed_in? %>
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to mypage_path, class: "nav-link" do %> My page<br/>マイページ <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to items_path, class: "nav-link" do %> Products<br/>商品一覧 <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to cart_items_path, class: "nav-link" do %> Cart<br/>カート <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to new_contact_path, class: "nav-link" do %> Contact<br/>問合せ <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %> Log out<br/>ログアウト <% end %>
               </li>
             </ul>
           <% elsif admin_signed_in? %>
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to admin_path, class: "nav-link" do %> 注文履歴一覧 <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to admin_customers_path, class: "nav-link" do %> 顧客一覧 <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item ounded shadow-sm mr-4 h6">
                 <%= link_to admin_items_path, class: "nav-link" do %> 商品一覧 <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to admin_item_genres_path, class: "nav-link" do %> 商品ジャンル一覧 <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to admin_contacts_path, class: "nav-link" do %> 問合せ一覧 <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to admin_contact_genres_path, class: "nav-link" do %> 問合せジャンル一覧 <% end %>
               </li>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm mr-4 h6">
                 <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %> ログアウト <% end %>
               </li>
             </ul>
           <% else %>
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to items_path, class: "nav-link" do %> Products<br/>商品一覧 <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to new_customer_registration_path, class: "nav-link" do %> Sign up<br/>新規作成 <% end %>
               </li>
-              <li class="nav-item text-center rounded shadow-sm mr-4 h6">
+              <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to new_customer_session_path, class: "nav-link" do %> Log in<br/>ログイン <% end %>
               </li>
             </ul>
@@ -90,7 +91,9 @@
           <!-- 検索フォーム -->
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-dark my-2 my-sm-0" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
           </form>
           
         </div>
@@ -102,28 +105,89 @@
       <%= yield %>
     </main>
     
-    <footer>
-      <!-- フッター機能追加... 8/12 -->
-      <% if customer_signed_in? %>
-        <li>メールアドレス： <%= current_customer.email %></li>
-        <li><%= link_to 'ロゴ',        root_path %></li>
-        <li><%= link_to 'マイページ',  mypage_path %></li>
-        <li><%= link_to '商品一覧',    items_path %></li>
-        <li><%= link_to 'カート',      cart_items_path %></li>
-        <li><%= link_to '問合せ',      new_contact_path %></li>
-      <% elsif admin_signed_in? %>
-        <li><%= link_to '注文履歴一覧',        admin_path %></li>
-        <li><%= link_to '顧客一覧',            admin_customers_path %></li>
-        <li><%= link_to '商品一覧',            admin_items_path %></li>
-        <li><%= link_to '商品ジャンル一覧',    admin_item_genres_path %></li>
-        <li><%= link_to '問合せ一覧',          admin_contacts_path %></li>
-        <li><%= link_to '問合せジャンル一覧',  admin_contact_genres_path %></li>
-      <% else %>
-        <li><%= link_to 'ロゴ',     root_path %></li>
-        <li><%= link_to '商品一覧', items_path %></li>
-        <li><%= link_to "新規登録", new_customer_registration_path %></li>
-      <% end %>
+    <footer class="shadow-lg bg-dark p-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12 mx-auto">
+            <%= link_to 'amber', root_path, class: "h1 text-white font-weight-bold" %>
+          </div>
+            
+          <div class="col-md-4 col-sm-6 col-xs-12 text-white">
+            <div class="mb-2">MENU</div>
+            <ul class="menu list-unstyled">
+              <% if customer_signed_in? %>
+                <li class="py-1">
+                  <%= link_to mypage_path, class: "text-white" do %> マイページ <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to items_path, class: "text-white" do %> 商品一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to cart_items_path, class: "text-white" do %> カート <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to new_contact_path, class: "text-white" do %> 問合せ <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "text-white" do %> ログアウト <% end %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="py-1">
+                  <%= link_to admin_path, class: "text-white" do %> 注文履歴一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to admin_customers_path, class: "text-white" do %> 顧客一覧覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to admin_items_path, class: "text-white" do %> 商品一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to admin_item_genres_path, class: "text-white" do %> 商品ジャンル一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to admin_contacts_path, class: "text-white" do %> 問合せ一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to admin_contact_genres_path, class: "text-white" do %> 問合せジャンル一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "text-white" do %> ログアウト <% end %>
+                </li>
+              <% else %>
+                <li class="py-1">
+                  <%= link_to items_path, class: "text-white" do %> 商品一覧 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to new_customer_registration_path, class: "text-white" do %> 新規作成 <% end %>
+                </li>
+                <li class="py-1">
+                  <%= link_to new_customer_session_path, class: "text-white" do %> ログイン <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+       
+          <div class="col-md-4 col-sm-6 col-xs-12 text-white">
+            <div class="mb-2">CONTACT</div>
+            <ul class="address list-unstyled">
+              <li class="py-1">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span class="ml-2">080-5246-8293</span>
+              </li>
+              <li class="py-1">
+                <i class="fa fa-map-marker" aria-hidden="true"></i> 
+                <span class="ml-2">長崎県西彼杵郡時津町</span>
+              </li> 
+              <li class="py-1">
+                <i class="fa fa-envelope" aria-hidden="true"></i> 
+                <span class="ml-2">makoto.se1988@outlook.jp</span>
+              </li> 
+            </ul>
+          </div>
+        </div> 
+      </div>
     </footer>
+    
   </body>
   
 </html>

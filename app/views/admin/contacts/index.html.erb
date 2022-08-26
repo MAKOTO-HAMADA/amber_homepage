@@ -1,8 +1,6 @@
 <h1>問合せ 一覧ページ</h1>
 
-<!-- ・全会員の［問合せ履歴］-->
-<!-- ＜問合せ日時＞　をクリック -->
-
-<%= @contacts.each do |contact| %>
-    <%= contact.id %>
+<% @contacts.each do |contact| %>
+    <%= link_to contact.name, admin_contact_path(contact.id) %>
+    <%= contact.id %><br/>
 <% end %>

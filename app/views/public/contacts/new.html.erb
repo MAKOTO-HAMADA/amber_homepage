@@ -2,7 +2,7 @@
 
 <%= form_with model: @contact, url: contacts_confirm_path, method: :post do |f| %>
 
-    ジャンル選択：<%= f.select :contat_genre_id, @contact_genres %><br/>
+    ジャンル選択：<%= f.select :contact_genre_id, @contact_genres %><br/>
     宛名：<%= f.text_field :name %><br/>
     メールアドレス：<%= f.email_field :email %><br/>
     問合せ内容：<%= f.text_field :inquiry %><br/>
