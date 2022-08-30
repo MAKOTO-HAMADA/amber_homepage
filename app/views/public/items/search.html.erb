@@ -1,0 +1,10 @@
+<ul>
+  <% if @q.name_cont != nil %>
+    <%= "#{@q.name_cont} の検索結果" %>
+    <% @items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  <% else %>
+    <%= "検索結果" %>
+  <% end %>
+</ul>

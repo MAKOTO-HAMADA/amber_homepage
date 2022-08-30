@@ -90,12 +90,13 @@
           
           <!-- 検索フォーム -->
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-dark my-2 my-sm-0" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
+            <%= search_form_for @q, url: search_items_path, class:"search-form" do |f| %>
+              <%= f.search_field :name_cont, placeholder: '商品名を検索', class:'form-control mr-sm-2' %>
+              <%= f.button type: "submit", class:"btn btn-dark my-2 my-sm-0" do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+            <% end %>
           </form>
-          
         </div>
         
       </nav>
@@ -108,10 +109,13 @@
     <footer class="shadow-lg bg-dark p-3">
       <div class="container">
         <div class="row">
+          
+          <!-- ロゴ（左段） -->
           <div class="col-md-4 col-sm-6 col-xs-12 mx-auto">
             <%= link_to 'amber', root_path, class: "h1 text-white font-weight-bold" %>
           </div>
-            
+          
+          <!-- 中段 -->
           <div class="col-md-4 col-sm-6 col-xs-12 text-white">
             <div class="mb-2">MENU</div>
             <ul class="menu list-unstyled">
@@ -166,7 +170,8 @@
               <% end %>
             </ul>
           </div>
-       
+          
+          <!-- 右段 -->
           <div class="col-md-4 col-sm-6 col-xs-12 text-white">
             <div class="mb-2">CONTACT</div>
             <ul class="address list-unstyled">
@@ -184,6 +189,7 @@
               </li> 
             </ul>
           </div>
+          
         </div> 
       </div>
     </footer>

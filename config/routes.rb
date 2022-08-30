@@ -40,7 +40,12 @@ Rails.application.routes.draw do
     # 配送
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
     # 商品
-    resources :items,              only: [:index, :show]
+    resources :items,              only: [:index, :show] do
+      collection do
+        get :search
+      end
+    end
+    
     # カート
     resources :cart_items,         only: [:index, :create, :update, :destroy] do
       collection do
