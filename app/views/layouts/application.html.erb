@@ -3,6 +3,7 @@
   <head>
     <title>amber</title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,7 +111,7 @@
       <div class="container">
         <div class="row">
           
-          <!-- ロゴ（左段） -->
+          <!-- ロゴ（左） -->
           <div class="col-md-4 col-sm-6 col-xs-12 mx-auto">
             <%= link_to 'amber', root_path, class: "h1 text-white font-weight-bold" %>
           </div>
