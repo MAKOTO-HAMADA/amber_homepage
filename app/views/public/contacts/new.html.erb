@@ -2,7 +2,7 @@
     
     <!-- タイトル -->
     <div class="row mb-5 justify-content-center">
-        <div class="display-3 font-weight-bold">問合せフォーム</div>
+        <div class="display-3 font-weight-bold">お問合せフォーム</div>
     </div>
     
     <!-- 入力フォーム-->
@@ -10,7 +10,7 @@
     <form class="container">
         <div class="form-group row justify-content-center mb-5">
             <div class="col-sm-2 col-form-label">
-                <%= f.label :contact_genre_id, "問合せジャンル" %>
+                <%= f.label :contact_genre_id, "お問合せジャンル" %>
             </div>
             <div class="col-sm-5">
                 <%= f.select :contact_genre_id, @contact_genres, {}, class: 'custom-select text-secondary' %>
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group row justify-content-center mb-5">
             <div class="col-sm-2 col-form-label">
-                <%= f.label :contact_genre_id, "問合せ内容" %>
+                <%= f.label :contact_genre_id, "お問合せ内容" %>
             </div>
             <div class="col-sm-5">
                 <%= f.text_area :inquiry, class: 'form-control' %>
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group row mb-5 justify-content-center">
             <div class="col-sm-auto">
-                <%= f.submit "問合せ内容の確認へ", class: 'btn btn-secondary btn-lg' %>
+                <%= f.submit "お問合せ内容の確認へ", class: 'btn btn-secondary btn-lg' %>
             </div>
         </div>
     </form>

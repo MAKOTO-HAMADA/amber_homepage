@@ -2,22 +2,22 @@
     
     <!-- タイトル -->
     <div class="row mb-5 justify-content-center">
-        <div class="display-3 font-weight-bold">問合せ確認ページ</div>
+        <div class="display-3 font-weight-bold">お問合せ確認ページ</div>
     </div>
     
     <!-- 入力フォーム-->
     <%= form_with model: @contact, url: contacts_path, method: :post do |f| %>
     
         <!-- 表示する内容 -->
-        <div class="form-group row mb-5 justify-content-center mb-5">
+        <div class="form-group row mb-5 justify-content-center">
             <div class="col-sm-2 col-form-label">
-                <%= f.label :contact_genre_id, "問合せジャンル" %>
+                <%= f.label :contact_genre_id, "お問合せジャンル" %>
             </div>
             <div class="col-sm-5 py-2 text-secondary">
                 <%= @contact_genre.name %>
             </div>
         </div>
-        <div class="form-group row mb-5 justify-content-center mb-5">
+        <div class="form-group row mb-5 justify-content-center">
             <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "宛名" %>
             </div>
@@ -25,7 +25,7 @@
                 <%= @contact.name %>
             </div>
         </div>
-        <div class="form-group row mb-5 justify-content-center mb-5">
+        <div class="form-group row mb-5 justify-content-center">
             <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "メールアドレス"%>
             </div>
@@ -33,9 +33,9 @@
                 <%= @contact.email %>
             </div>
         </div>
-        <div class="form-group row mb-5 justify-content-center mb-5">
+        <div class="form-group row mb-5 justify-content-center">
             <div class="col-sm-2 col-form-label">
-                <%= f.label :contact_genre_id, "問合せ内容" %>
+                <%= f.label :contact_genre_id, "お問合せ内容" %>
             </div>
             <div class="col-sm-5 py-2 text-secondary">
                 <%= @contact.inquiry %>
@@ -43,7 +43,7 @@
         </div>
         <div class="row mb-5 justify-content-center">
             <div class="col-sm-auto">
-                <%= f.submit "問合せを確定する", class: 'btn btn-danger btn-lg rounded-pill' %>
+                <%= f.submit "お問合せを確定する", class: 'btn btn-danger btn-lg rounded-pill' %>
             </div>
         </div>
 
