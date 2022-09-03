@@ -7,6 +7,7 @@ class Public::ContactsController < ApplicationController
   
   def confirm
     @contact = Contact.new(contact_params)
+    @contact_genre = ContactGenre.find(@contact.contact_genre_id)
   end
   
   def create

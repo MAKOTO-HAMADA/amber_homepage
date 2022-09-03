@@ -6,82 +6,53 @@
     </div>
     
     <!-- 入力フォーム-->
-    <%= form_with model: @contact, url: contacts_confirm_path, method: :post do |f| %>
-    <form>
-        <div class="form-group row mb-5">
-            <div class="col-sm-3 col-form-label">
+    <%= form_with model: @contact, url: contacts_path, method: :post do |f| %>
+    
+        <!-- 表示する内容 -->
+        <div class="form-group row mb-5 justify-content-center mb-5">
+            <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "問合せジャンル" %>
             </div>
-            <div class="col-sm">
-                <%= f.select :contact_genre_id, @contact_genres, {}, class: 'custom-select' %>
+            <div class="col-sm-5 py-2 text-secondary">
+                <%= @contact_genre.name %>
             </div>
         </div>
-        <div class="form-group row mb-5">
-            <div class="col-sm-3 col-form-label">
+        <div class="form-group row mb-5 justify-content-center mb-5">
+            <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "宛名" %>
             </div>
-            <div class="col-sm">
-                <%= f.text_field :name, class: 'form-control' %>
+            <div class="col-sm-5 py-2 text-secondary">
+                <%= @contact.name %>
             </div>
         </div>
-        <div class="form-group row mb-5">
-            <div class="col-sm-3 col-form-label">
+        <div class="form-group row mb-5 justify-content-center mb-5">
+            <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "メールアドレス"%>
             </div>
-            <div class="col-sm">
-                <%= f.email_field :email, class: 'form-control', placeholder: "name@example.com" %>
+            <div class="col-sm-5 py-2 text-secondary">
+                <%= @contact.email %>
             </div>
         </div>
-        <div class="form-group row mb-5">
-            <div class="col-sm-3 col-form-label">
+        <div class="form-group row mb-5 justify-content-center mb-5">
+            <div class="col-sm-2 col-form-label">
                 <%= f.label :contact_genre_id, "問合せ内容" %>
             </div>
-            <div class="col-sm">
-                <%= f.text_area :inquiry, class: 'form-control' %>
+            <div class="col-sm-5 py-2 text-secondary">
+                <%= @contact.inquiry %>
             </div>
         </div>
-        <div class="form-group row mb-5 justify-content-center">
+        <div class="row mb-5 justify-content-center">
             <div class="col-sm-auto">
-                <%= f.submit "問合せ内容の確認へ", class: 'btn btn-secondary btn-lg' %>
+                <%= f.submit "問合せを確定する", class: 'btn btn-danger btn-lg rounded-pill' %>
             </div>
         </div>
-    </form>
-    <% end %>
-    
 
-
-
-
-
-
-
-
-
-<h1>問合せ 確認ページ</h1>
-
-<!-- 画面で確認する内容 -->
-<%= @contact.customer_id %><br/>
-<%= @contact.contact_genre_id %><br/>
-<%= @contact.name %><br/>
-<%= @contact.email %><br/>
-<%= @contact.inquiry %><br/>
-
-<!-- createアクションに渡す内容 -->
-<%= form_with model: @contact, url: contacts_path, method: :post do |f| %>
-    <form>
+        <!-- createアクションに渡す内容 -->
         <%= f.hidden_field :contact_genre_id, value: @contact.contact_genre_id %>
         <%= f.hidden_field :name, value: @contact.name %>
         <%= f.hidden_field :email, value: @contact.email %>
         <%= f.hidden_field :inquiry, value: @contact.inquiry %>
-        <div class="form-group row mb-5 justify-content-center">
-            <div class="col-sm-auto">
-                <%= f.submit "問合せを確定する", class: 'btn btn-secondary btn-lg' %>
-            </div>
-        </div>
-    </form>
-<% end %>
-
-
-
-
+        
+    <% end %>
+    
 </div>
