@@ -1,16 +1,22 @@
-<!-- 8/14 -->
-<h1>商品詳細</h1>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">商品詳細</div>
+    </div>
 
 
-<%= @item.name %><br/>
-<%= @item.item_genre.name %><br/>
+    <%= @item.name %><br/>
+    <%= @item.item_genre.name %><br/>
+    
+    <!-- ジャンル検索実装(render) -->
+    
+    
+    <%= form_with model: @cart_item do |f| %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %><br/>
+        <%= f.hidden_field :item_id, :value => @item.id %><br/>
+        <%= f.select :quantity_by_type, *[1..5] %><br/>
+        <%= f.submit "カートに追加する" %>
+    <% end %>
 
-<!-- ジャンル検索実装(render) -->
-
-
-<%= form_with model: @cart_item do |f| %>
-    <%= f.hidden_field :customer_id, :value => current_customer.id %><br/>
-    <%= f.hidden_field :item_id, :value => @item.id %><br/>
-    <%= f.select :quantity_by_type, *[1..5] %><br/>
-    <%= f.submit "カートに追加する" %>
-<% end %>
+</div>
