@@ -1,10 +1,51 @@
-<h1>問合せ 入力ページ</h1>
-
-<%= form_with model: @contact, url: contacts_confirm_path, method: :post do |f| %>
-
-    ジャンル選択：<%= f.select :contact_genre_id, @contact_genres %><br/>
-    宛名：<%= f.text_field :name %><br/>
-    メールアドレス：<%= f.email_field :email %><br/>
-    問合せ内容：<%= f.text_field :inquiry %><br/>
-    <%= f.submit "問合せ内容の確認へ" %><br/>
-<% end %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">問合せフォーム</div>
+    </div>
+    
+    <!-- 入力フォーム-->
+    <%= form_with model: @contact, url: contacts_confirm_path, method: :post do |f| %>
+    <form>
+        <div class="form-group row mb-5">
+            <div class="col-sm-3 col-form-label">
+                <%= f.label :contact_genre_id, "問合せジャンル" %>
+            </div>
+            <div class="col-sm">
+                <%= f.select :contact_genre_id, @contact_genres, {}, class: 'custom-select' %>
+            </div>
+        </div>
+        <div class="form-group row mb-5">
+            <div class="col-sm-3 col-form-label">
+                <%= f.label :contact_genre_id, "宛名" %>
+            </div>
+            <div class="col-sm">
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group row mb-5">
+            <div class="col-sm-3 col-form-label">
+                <%= f.label :contact_genre_id, "メールアドレス"%>
+            </div>
+            <div class="col-sm">
+                <%= f.email_field :email, class: 'form-control', placeholder: "name@example.com" %>
+            </div>
+        </div>
+        <div class="form-group row mb-5">
+            <div class="col-sm-3 col-form-label">
+                <%= f.label :contact_genre_id, "問合せ内容" %>
+            </div>
+            <div class="col-sm">
+                <%= f.text_area :inquiry, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group row mb-5 justify-content-center">
+            <div class="col-sm-auto">
+                <%= f.submit "問合せ内容の確認へ", class: 'btn btn-secondary btn-lg' %>
+            </div>
+        </div>
+    </form>
+    <% end %>
+    
+</div>
