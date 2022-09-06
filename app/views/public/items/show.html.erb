@@ -1,22 +1,35 @@
 <div class="container">
-    
-    <!-- タイトル -->
-    <div class="row mb-5 justify-content-center">
-        <div class="display-3 font-weight-bold">商品詳細</div>
+    <div class="row mb-5">
+        
+        <!-- 左_ジャンル検索作成予定 -->
+        <div class="col-2">
+            <!---->
+        </div>
+        
+        <!-- 右_商品一覧-->
+        <div class="col-10">
+            <div class="row ml-2 mb-3 display-3 font-weight-bold align-items-end">
+                <%= @item.name %>
+                <h3 class="ml-5"><i class="fas fa-map-signs mr-1"></i><%= @item.item_genre.name %></h3>
+            </div>
+            
+            <div class="row">
+                <div class="col-5">
+                    <%= image_tag @item.image, class: 'autosizing-image rounded shadow' %>
+                </div>
+                <div class="col-7 d-flex flex-column">
+                    <div class="h4"><%= @item.introduction %></div>
+                    <div class="h1">¥<%= @item.add_tax_price %></div>
+                    
+                    <%= form_with model: @cart_item, class: 'mt-auto' do |f| %>
+                        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                        <%= f.hidden_field :item_id, :value => @item.id %>
+                        <%= f.select :quantity_by_type, *[1..5] %>
+                        <%= f.submit "カートに追加する", class: 'btn btn-secondary btn-lg btn-block' %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        
     </div>
-
-
-    <%= @item.name %><br/>
-    <%= @item.item_genre.name %><br/>
-    
-    <!-- ジャンル検索実装(render) -->
-    
-    
-    <%= form_with model: @cart_item do |f| %>
-        <%= f.hidden_field :customer_id, :value => current_customer.id %><br/>
-        <%= f.hidden_field :item_id, :value => @item.id %><br/>
-        <%= f.select :quantity_by_type, *[1..5] %><br/>
-        <%= f.submit "カートに追加する" %>
-    <% end %>
-
 </div>

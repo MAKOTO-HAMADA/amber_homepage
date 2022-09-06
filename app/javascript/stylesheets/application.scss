@@ -1,2 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.autosizing-image {
+    height: 250px;
+    width: auto;
+    object-fit: cover;
+}

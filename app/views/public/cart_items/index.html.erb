@@ -1,4 +1,39 @@
-<h1>カート</h1>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col">
+            <div class="row mb-3 display-3 font-weight-bold">Cart</div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <table class="table">
+                <thead class="thead-dark">
+                    <th>商品名</th>
+                    <th>価格(税込)</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5">
+        
+        <div class="col">
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+
+
 
 <% @cart_items.each do |cart_item| %>
     <% if cart_item.customer_id == current_customer.id %>

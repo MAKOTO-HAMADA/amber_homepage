@@ -1,33 +1,28 @@
 <div class="container">
-    
     <div class="row mb-5">
+        
+        <!-- 左_ジャンル検索作成予定 -->
         <div class="col-2">
-            <!-- ジャンル検索作成予定 -->
+            <!---->
         </div>
+        
+        <!-- 右_商品一覧-->
         <div class="col-10">
-            <!-- タイトル -->
-            <div class="row display-3 font-weight-bold">商品一覧</div>
-            <div class="row d-flex flex-wrap">
+            <div class="row mb-3 display-3 font-weight-bold">商品一覧</div>
+            <div class="row">
                 <% @items.each do |item| %>
-                    <div class="card">
-                        <%= image_tag item.image, width: '250'%>
-                        <div class="card-body">
-                            <p class="card-text"><%= item.name %></p>
-                            <p class="card-text">¥<%= item.price %></p>
-                        </div>
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                        <%= link_to item_path(item.id), class: 'card shadow' do %>
+                            <%= image_tag item.image, class: 'autosizing-image img-fluid rounded-top' %>
+                            <div class="card-body text-white bg-dark">
+                                <p class="card-title h4"><%= item.name %></p>
+                                <p class="card-text h6">¥<%= item.add_tax_price %></p>
+                            </div>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
-            
         </div>
+        
     </div>
-    
 </div>
-
-
-
-
-
-<% @items.each do |item| %>
-    <%= link_to item.name, item_path(item.id) %>
-<% end %>
