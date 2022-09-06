@@ -1,12 +1,16 @@
 <div class="container">
-    <div class="row mb-5">
+    
+    <!-- タイトル -->
+    <div class="row">
         <div class="col">
             <div class="row mb-3 display-3 font-weight-bold">Cart</div>
         </div>
     </div>
+    
+    <!-- テーブル -->
     <div class="row mb-5">
         <div class="col">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="thead-dark">
                     <th>商品名</th>
                     <th>価格(税込)</th>
@@ -14,38 +18,42 @@
                     <th>小計</th>
                     <th></th>
                 </thead>
-                <tbody>
-                    
-                </tbody>
+                <% @cart_items.each do |cart_item| %>
+                    <% if cart_item.customer_id == current_customer.id %>
+                        <%= form_with model: cart_item do |f| %>
+                            <tbody>
+                                <th><%= cart_item.item.name %></th>
+                                <td>¥<%= cart_item.item.add_tax_price %></td>
+                                <td>
+                                    <%= f.select :quantity_by_type, *[1..5], class: 'form-control' %>
+                                    <%= f.submit "変更", class: 'btn btn-secondary' %>
+                                </td>
+                                <td>¥<%= cart_item.subtotal %></td>
+                                <td class="text-center"><%= link_to "削除", cart_item_path(cart_item.id), class: 'btn btn-danger', method: :delete %></td>
+                            </tbody>
+                            <% @total_price += cart_item.subtotal %>
+                        <% end %>
+                    <% end %>
+                <% end %>
             </table>
         </div>
     </div>
+    
+    <!-- 中段ボタン*２ 合計 -->
     <div class="row mb-5">
-        
+        <div class="col"><%= link_to "買い物を続ける", items_path, class: 'btn btn-secondary' %></div>
+        <div class="col"><%= link_to "カート内全部削除", destroy_all_cart_items_path, class: 'btn btn-danger', method: :delete %></div>
         <div class="col">
-            
+            <table class="table table-bordered">
+                <th>合計金額</th>
+                <td>¥<%= @total_price %></td>
+            </table>
         </div>
-        
+    </div>
+    
+    <!-- 下段ボタン -->
+    <div class="row mb-5">
+        <div class="col d-flex justify-content-end"><%= link_to "注文情報入力へ進む", new_order_path, class: 'btn btn-secondary btn-lg' %></div>
     </div>
     
 </div>
-
-
-
-
-
-
-<% @cart_items.each do |cart_item| %>
-    <% if cart_item.customer_id == current_customer.id %>
-        <%= form_with model: cart_item do |f| %>
-            <%= f.select :quantity_by_type, *[1..5] %>
-            <%= f.submit "変更を保存" %>
-            <%= link_to "削除", cart_item_path(cart_item.id), method: :delete %><br/>    
-        <% end %>
-        
-    <% end %>
-<% end %>
-
-<%= link_to "カート全部削除", destroy_all_cart_items_path, method: :delete %><br/>
-<%= link_to "買い物を続ける", items_path%><br/>
-<%= link_to "注文情報入力へ進む", new_order_path%><br/>
