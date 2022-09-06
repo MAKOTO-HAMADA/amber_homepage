@@ -1,32 +1,72 @@
-<h1>注文情報 入力ページ</h1>
-
-<%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-
-    <!--［支払方法］　をラジオボタン -->
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br/>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %><br/>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:cashless] %><br/>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(3) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:cash_on_delivery] %><br/>
-    
-    <!--［届け先］を選択（自分の住所／配送先／［新規住所］の入力）-->
-    <%= radio_button_tag 'select_address', 0, checked: true %>ご自身の住所<br/>
-    〒<%= current_customer.postal_code%><%= current_customer.full_address %><br/>
-    
-    <%= radio_button_tag 'select_address', 1 %>登録済住所から選択<br/>
-    <%= select_tag 'adress_id', options_for_select(ShippingAddress.all.map{|a| ["〒#{a.postal_code} #{a.address}", a.id]}) %><br/>
-    
-    <%= radio_button_tag 'select_address', 2 %>新しいお届け先<br/>
-    郵便番号：<%= f.text_field :postal_code %><br/>
-    住所　　：<%= f.text_field :address %><br/>
-    宛名　　：<%= f.text_field :name %><br/>
-    
-    <%= f.submit "確認画面へ" %>
-    
-<% end %>
-
-<%= debug ShippingAddress.all.map{|a| [a.postal_code, a.address, a.name]} %><br/>
-<%= debug options_for_select(ShippingAddress.all.map{|a| [a.address, a.id]}) %><br/>
+<div class="container mb-5">
+    <div class="row justify-content-md-center">
+        
+        <div class="">
+            <div class="mb-3 display-3 font-weight-bold">
+                注文情報入力
+            </div>
+            <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
+                <!--［支払方法］　をラジオボタン -->
+                <div class="h3 mb-3"><i class="fas fa-money-bill-wave"></i>　支払い方法</div>
+                <div class="row ml-5 mb-3">
+                    <div class="col-4">
+                        <div class="form-control mb-4 text-truncate">
+                            <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+                            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+                        </div>
+                        <div class="form-control mb-4 text-truncate">
+                            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+                            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+                        </div>
+                        <div class="form-control mb-4 text-truncate">
+                            <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
+                            <%= f.label :payment_method, Order.payment_methods_i18n[:cashless] %>
+                        </div>
+                        <div class="form-control mb-4 text-truncate">
+                            <%= f.radio_button :payment_method, Order.payment_methods.key(3) %>
+                            <%= f.label :payment_method, Order.payment_methods_i18n[:cash_on_delivery] %>
+                        </div>
+                    </div>
+                </div>
+                <!--［届け先］を選択（自分の住所／配送先／［新規住所］の入力）-->
+                <div class="h3 mb-3"><i class="fas fa-truck"></i>　お届け先</div>
+                <div class="row ml-5 mb-5">
+                    <div class="col-4">
+                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 0, checked: true %> ご自身の住所</div>
+                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 1 %> 登録済住所選択</div>
+                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 2 %> 新しいお届け先</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="form-control mb-4 text-truncate">〒<%= current_customer.postal_code%><%= current_customer.full_address %></div>
+                        
+                        <%= select_tag 'adress_id', options_for_select(ShippingAddress.all.map{|a| ["〒#{a.postal_code} #{a.address}", a.id]}), class: 'form-control text-truncate' %><br/>
+                        
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">郵便番号</span>
+                            </div>
+                            <%= f.text_field :postal_code, class: 'form-control' %>
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">住所</span>
+                            </div>
+                            <%= f.text_field :address, class: 'form-control' %>
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">宛名</span>
+                            </div>
+                            <%= f.text_field :name, class: 'form-control' %>
+                        </div>
+                    </div>
+                </div>
+                <!-- 下段ボタン -->
+                <div class="d-flex justify-content-center">
+                    <%= f.submit "確認画面へ進む", class: 'btn btn-secondary btn-lg' %>
+                </div>
+            <% end %>
+        </div>
+        
+    </div>
+</div>

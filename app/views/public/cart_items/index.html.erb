@@ -11,23 +11,23 @@
     <div class="row mb-5">
         <div class="col">
             <table class="table table-bordered">
+                <!--  ヘッド -->
                 <thead class="thead-dark">
                     <th>商品名</th>
                     <th>価格(税込)</th>
-                    <th>数量</th>
+                    <th colspan="2">数量</th>
                     <th>小計</th>
                     <th></th>
                 </thead>
+                <!-- ボディ -->
                 <% @cart_items.each do |cart_item| %>
                     <% if cart_item.customer_id == current_customer.id %>
                         <%= form_with model: cart_item do |f| %>
                             <tbody>
                                 <th><%= cart_item.item.name %></th>
                                 <td>¥<%= cart_item.item.add_tax_price %></td>
-                                <td>
-                                    <%= f.select :quantity_by_type, *[1..5], class: 'form-control' %>
-                                    <%= f.submit "変更", class: 'btn btn-secondary' %>
-                                </td>
+                                <td><%= f.select :quantity_by_type, *[1..5], {}, class: 'form-control' %></td>
+                                <td class="text-center"><%= f.submit "変更", class: 'btn btn-secondary' %></td>
                                 <td>¥<%= cart_item.subtotal %></td>
                                 <td class="text-center"><%= link_to "削除", cart_item_path(cart_item.id), class: 'btn btn-danger', method: :delete %></td>
                             </tbody>
