@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 2022_08_17_203252) do
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.integer "quantity_by_type", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
   end

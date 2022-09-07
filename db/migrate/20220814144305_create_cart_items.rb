@@ -5,8 +5,6 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.references :customer,      null: false
       t.references :item,          null: false
       t.integer :quantity_by_type, null: false
-      
-      t.timestamps
     end
   end
 end
