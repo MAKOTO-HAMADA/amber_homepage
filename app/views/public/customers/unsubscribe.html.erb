@@ -1,5 +1,18 @@
-<!-- 8/17 -->
-<h1>退会確認ページ</h1>
-
-<%= link_to "退会しない", mypage_path %><br/>
-<%= link_to "退会する", withdraw_customer_path, method: :patch %><br/>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">退会確認</div>
+    </div>
+    <!-- 文 -->
+    <div class="mb-5">
+        <p class="text-center h1">退会手続きをすると復帰することはできません。</p>
+        <p class="text-center h1">本当に退会してよろしいですか。</p>
+    </div>
+    <!-- リンク -->
+    <div class="row mb-5 d-flex justify-content-around">
+        <%= link_to "退会しない", mypage_path, class: 'btn btn-secondary btn-lg' %>
+        <%= link_to "退会する", withdraw_customer_path, method: :patch, class: 'btn btn-danger btn-lg rounded-pill' %>
+    </div>
+    
+</div>
