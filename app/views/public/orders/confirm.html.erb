@@ -1,7 +1,7 @@
 <div class="container mb-5">
     
     <div class="mb-3 display-3 font-weight-bold">
-        ご注文注文内容の確認
+        ご注文内容の確認
     </div>
     
     <div class="row mb-3">
@@ -92,7 +92,7 @@
             <%= f.hidden_field :postage, value: 800 %>
             <%= f.hidden_field :payment_of_total, value: @order.payment_of_total %>
             <%= f.hidden_field :payment_method, value: @order.payment_method %>
-            <%= f.submit "注文を確定する", class: 'btn btn-secondary btn-lg' %>
+            <%= f.submit "注文を確定する", class: 'btn btn-danger btn-lg rounded-pill' %>
         <% end %>
     </div>
     

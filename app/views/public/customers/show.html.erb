@@ -1,8 +1,59 @@
-<!-- 8/16 -->
-<h1>マイページ</h1>
-
-<%= @customer.full_name %><br/>
-
-<%= link_to "編集", edit_information_path %><br/>
-<%= link_to "注文履歴", orders_path %><br/>
-<%= link_to "配送先", shipping_addresses_path %><br/>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">My Page</div>
+    </div>
+    
+    <div class="row mb-5">
+        
+        <!-- 左段 -->
+        <div class="col-3">
+            <div class="row mb-4 col-form-label">名前</div>
+            <div class="row mb-4 col-form-label">フリガナ</div>
+            <div class="row mb-4 col-form-label">メールアドレス</div>
+            <div class="row mb-4 col-form-label">郵便番号</div>
+            <div class="row mb-4 col-form-label">住所</div>
+            <div class="row      col-form-label">電話番号</div>
+        </div>
+        
+        <!-- 中段 -->
+        <div class="col-6">
+            <div class="row mb-4 d-flex">
+                <div class="form-control col-4 mr-3"><%= @customer.last_name %></div>
+                <div class="form-control col-4 ml-auto"><%= @customer.first_name %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="form-control col-4 mr-3"><%= @customer.last_name_kana %></div>
+                <div class="form-control col-4 ml-auto"><%= @customer.first_name_kana %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="form-control col"><%= @customer.email %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="form-control col-4"><%= @customer.postal_code %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="form-control col"><%= @customer.full_address %></div>
+            </div>
+            <div class="row d-flex">
+                <div class="form-control col-4"><%= @customer.telephone_number %></div>
+            </div>
+        </div>
+        
+        <!-- 右段 -->
+        <div class="col-3 d-flex align-items-end flex-column">
+            <div class="row mb-5">
+                <%= link_to "編集", edit_information_path, class: 'btn btn-secondary btn-lg' %>
+            </div>
+            <div class="row mt-5">
+                <%= link_to "注文履歴", orders_path, class: 'btn btn-secondary btn-lg' %>
+            </div>
+            <div class="row mt-auto">
+                <%= link_to "配送先", shipping_addresses_path, class: 'btn btn-secondary btn-lg' %>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

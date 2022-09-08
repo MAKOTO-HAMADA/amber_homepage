@@ -1,3 +1,19 @@
-<h1>注文 完了ページ</h1>
-
-<%= link_to "買い物に戻る", items_path %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">ご注文完了</div>
+    </div>
+    <!-- 文 -->
+    <div class="mb-5">
+        <p class="text-center h1">ご注文ありがとうございました。</p>
+        <p class="text-center h1">到着まで今しばらくお待ちください。</p>
+    </div>
+    <!-- リンク -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-sm-auto">
+            <%= link_to "お買い物に戻る", items_path, class: 'btn btn-lg btn-secondary' %>
+        </div>
+    </div>
+    
+</div>
