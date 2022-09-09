@@ -19,6 +19,9 @@ class Public::ShippingAddressesController < ApplicationController
   end
   
   def destroy
+    s_address = ShippingAddress.find(params[:id])
+    s_address.destroy
+    redirect_to shipping_addresses_path
   end
   
   private

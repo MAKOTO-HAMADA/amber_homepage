@@ -1,14 +1,71 @@
-<h1>配送先 一覧ページ</h1>
-
-<% @shipping_addresses.each do |s_address| %>
-    <%= s_address.name %>
-<% end %>
-
-<%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
-    郵便番号：<%= f.text_field :postal_code %><br/>
-    住所　　：<%= f.text_field :address %><br/>
-    名前　　：<%= f.text_field :name %><br/>
-    電話番号：<%= f.text_field :telephone_number %><br/>
-    メール　：<%= f.email_field :email %><br/>
-    <%= f.submit "登録" %><br/>
-<% end %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">配送先作成</div>
+    </div>
+  
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            
+            <!-- 左辺 -->
+            <div class="col-4">
+                <%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
+                    <p class="h3  mb-4">
+                        <i class="fas fa-truck"></i> 新規登録
+                    </p>
+                    <div class="row mb-4">
+                        <%= f.label :postal_code, "郵便番号", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :postal_code, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :address, "住所", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :address, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :name, "宛名", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :name, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :telephone_number, "電話番号", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :telephone_number, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :email, "メール", class: 'col-5 col-form-label' %>
+                        <%= f.email_field :email, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <%= f.submit "新規登録", class: 'btn btn-danger btn-lg rounded-pill' %>
+                    </div>
+                <% end %>
+            </div>
+            
+            <!-- 右辺 -->
+            <div class="col-8">
+                <p class="h3  mb-4">
+                    <i class="fas fa-stream"></i> 配送先一覧
+                </p>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <th>宛名</th>
+                        <th colspan="3">住所</th>
+                    </thead>
+                    <% @shipping_addresses.each do |s_address| %>
+                        <tbody>
+                            <td><%= s_address.name %></td>
+                            <td><%= s_address.address %></td>
+                            <td class="text-center">
+                                <%= link_to "編集", edit_shipping_address_path(s_address.id), class: 'btn btn-secondary' %>
+                            </td>
+                            <td class="text-center">
+                                <%= link_to "削除", shipping_address_path(s_address.id), class: 'btn btn-danger', method: :delete %>
+                            </td>
+                        </tbody>
+                    <% end %>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
