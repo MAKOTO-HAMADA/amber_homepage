@@ -1,2 +1,42 @@
-<h1>Public::ShippingAddresses#edit</h1>
-<p>Find me in app/views/public/shipping_addresses/edit.html.erb</p>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold">配送先の編集</div>
+    </div>
+  
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            
+            <div class="col-7">
+                <%= form_with model: @shipping_address, url: shipping_address_path, method: :patch do |f| %>
+                    <div class="row mb-4">
+                        <%= f.label :postal_code, "郵便番号", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :postal_code, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :address, "住所", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :address, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :name, "宛名", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :name, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :telephone_number, "電話番号", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :telephone_number, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :email, "メール", class: 'col-5 col-form-label' %>
+                        <%= f.email_field :email, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <%= f.submit "変更内容を保存", class: 'btn btn-danger btn-lg rounded-pill' %>
+                    </div>
+                <% end %>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

@@ -13,9 +13,13 @@ class Public::ShippingAddressesController < ApplicationController
   end
 
   def edit
+    @shipping_address = ShippingAddress.find(params[:id])
   end
   
-  def updated
+  def update
+    s_address = ShippingAddress.find(params[:id])
+    s_address.update(shippingaddress_params)
+    redirect_to shipping_addresses_path
   end
   
   def destroy
