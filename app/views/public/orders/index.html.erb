@@ -1,5 +1,51 @@
-<h1>注文履歴 一覧ページ</h1>
-
-<% @orders.each do |order| %>
-    <%= link_to order.name, order_path(order.id) %><br/>
-<% end %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 ml-1">
+        <div class="display-3 font-weight-bold">ご注文履歴の一覧</div>
+    </div>
+  
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>注文日</th>
+                        <th>配送先</th>
+                        <th>注文商品</th>
+                        <th>商品金額</th>
+                        <th>ステータス</th>
+                        <th>注文詳細</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <td class="align-middle"><%= l order.created_at, format: :short %></td>
+                            <td>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">〒 <%= order.postal_code %></li>
+                                    <li class="list-group-item"><%= order.address %></li>
+                                </ul>
+                            </td>
+                            <td class="align-middle">
+                                <ul class="list-group list-group-flush">
+                                    <!-- 購入した商品全てを表示させたい -->
+                                    <%# order.items.each do |item| %>
+                                    <!--    <li class="list-group-item"><%#= item.name %></li>-->
+                                    <%# end %>
+                                </ul>
+                            </td>
+                            <td class="align-middle">¥ <%= order.payment_of_total %></td>
+                            <td class="align-middle text-center"><%= order.order_status_i18n %></td>
+                            <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class: 'btn btn-secondary btn-lg' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    
+</div>

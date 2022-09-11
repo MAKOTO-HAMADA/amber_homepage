@@ -12,3 +12,8 @@
             paid:                "支払済"
             preparing_to_ship:   "発送準備中"
             shipped:             "発送済"
+            
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+        short: "%m月%d日　%H時%M分"

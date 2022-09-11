@@ -1,5 +1,68 @@
-<h1>注文履歴 詳細ページ</h1>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 ml-1">
+        <div class="display-3 font-weight-bold">ご注文履歴の詳細</div>
+    </div>
+  
+    <div class="container">
+        <div class="row mb-5">
+          
+          <div class="col-7">
+            <p class="h3">注文情報</p>
+            <table class="table table-sm table-bordered">
+              <tr>
+                <th class="table-dark pl-4">注文日</th>
+                <td class="pl-4"><%= l @order.created_at, format: :short %></td>
+              </tr>
+              <tr>
+                <th class="table-dark pl-4 align-middle">配送先</th>
+                <td>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">〒 <%= @order.postal_code %></li>
+                    <li class="list-group-item"><%= @order.address %></li>
+                    <li class="list-group-item"><%= @order.name %></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th class="table-dark pl-4">支払方法</th>
+                <td class="pl-4"><%= @order.payment_method_i18n %></td>
+              </tr>
+              <tr>
+                <th class="table-dark pl-4">ステータス</th>
+                <td class="pl-4"><%= @order.order_status_i18n %></td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="col-5">
+            <p class="h3">請求情報</p>
+            <table class="table table-sm table-bordered">
+              <tr>
+                <th class="table-dark pl-4">商品合計</th>
+                <td class="pl-4"><%= l @order.created_at, format: :short %></td>
+              </tr>
+              <tr>
+                <th class="table-dark pl-4">支払方法</th>
+                <td class="pl-4"><%= @order.payment_method_i18n %></td>
+              </tr>
+              <tr>
+                <th class="table-dark pl-4">ステータス</th>
+                <td class="pl-4"><%= @order.order_status_i18n %></td>
+              </tr>
+            </table>
+          </div>
+          
+        </div>
+    </div>
+    
+</div>
 
+
+    
+    
+    
 <%= @order.name %><br/>
 
 <%= link_to "注文履歴一覧に戻る", orders_path %><br/>

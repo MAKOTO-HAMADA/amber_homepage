@@ -21,5 +21,7 @@ module Amber
     
     # Railsアプリケーションを国際化(i18n)という仕組み使って日本語対応させる
     config.i18n.default_locale = :ja
+    # タイムゾーンをＵＴＣ(協定時) → 日本時間に変更する
+    config.time_zone = 'Tokyo'
   end
 end
