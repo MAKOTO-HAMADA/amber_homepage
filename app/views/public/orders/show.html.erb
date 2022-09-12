@@ -5,10 +5,13 @@
         <div class="display-3 font-weight-bold">ご注文履歴の詳細</div>
     </div>
   
-    <div class="container">
-        <div class="row mb-5">
-          
-          <div class="col-7">
+    <div class="container mb-5">
+     
+      <!-- 上段 -->
+      <div class="row mb-3 d-flex">  
+        <!-- 左テーブル -->
+        <div class="col-6 mr-auto">
+          <div class="row">
             <p class="h3">注文情報</p>
             <table class="table table-sm table-bordered">
               <tr>
@@ -35,34 +38,52 @@
               </tr>
             </table>
           </div>
-          
-          <div class="col-5">
+        </div>
+        <!-- 右テーブル -->
+        <div class="col-5">
+          <div class="row">
             <p class="h3">請求情報</p>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm mb-4 table-bordered">
               <tr>
                 <th class="table-dark pl-4">商品合計</th>
-                <td class="pl-4"><%= l @order.created_at, format: :short %></td>
+                <td class="pl-4">¥ <%= @order.payment_of_total %></td>
               </tr>
               <tr>
-                <th class="table-dark pl-4">支払方法</th>
-                <td class="pl-4"><%= @order.payment_method_i18n %></td>
+                <th class="table-dark pl-4">配送料</th>
+                <td class="pl-4">¥ 800</td>
               </tr>
               <tr>
-                <th class="table-dark pl-4">ステータス</th>
-                <td class="pl-4"><%= @order.order_status_i18n %></td>
+                <th class="table-dark pl-4">支払合計額</th>
+                <td class="pl-4">¥ <%= @order.payment_of_total += 800 %></td>
               </tr>
             </table>
           </div>
-          
         </div>
+      </div>
+      
+      <!-- 下段・下テーブル -->
+      <div class="row mb-3">
+        <p class="h3">注文内容</p>
+        <table class="table table-sm mb-4 table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- 最下位ボタン-->
+      <div class="row mb-3 d-flex justify-content-center">
+        <%= link_to "注文履歴一覧に戻る", orders_path, class: 'btn btn-secondary btn-lg' %>
+      </div>
+        
     </div>
     
 </div>
-
-
-    
-    
-    
-<%= @order.name %><br/>
-
-<%= link_to "注文履歴一覧に戻る", orders_path %><br/>

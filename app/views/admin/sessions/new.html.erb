@@ -1,26 +1,34 @@
-<h1>管理者 ログインページ</h1>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  
+  <!-- タイトル -->
+  <div class="row mb-5 justify-content-center">
+    <div class="display-3 font-weight-bold">管理者ログイン</div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  
+  <div class="container mb-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
+        <!-- 入力フォーム -->
+        <div class="row justify-content-center mb-4">
+          <%= f.label :email, "メール", class: 'col-2 col-form-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'col-5 form-control' %>
+        </div>
+        <div class="row justify-content-center mb-4">
+          <%= f.label :password, "パスワード", class: 'col-2 col-form-label' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'col-5 form-control' %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="row actions justify-content-center mb-4">
+            <%= f.check_box :remember_me, class: 'col-2 col-form-label' %>
+            <%= f.label :remember_me, "パスワードを保存", class: 'col-5' %>
+          </div>
+        <% end %>
+      
+        <div class="row mb-4 actions d-flex justify-content-center">
+          <%= f.submit "ログイン", class: 'col-2 mr-5 btn btn-secondary btn-lg rounded-pill' %>
+        </div>
+      
+    <% end %>
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>     <!-- admins => admin ...8/10 -->
+  
+</div>
