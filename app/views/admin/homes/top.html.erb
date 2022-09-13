@@ -1,11 +1,38 @@
-<h1>注文履歴 一覧/トップページ</h1>
-
-<!-- 全会員の[注文履歴] -->
-<!-- ＜注文日時＞　をクリック -->
-
-<% @orders.each do |order| %>
-    <%= link_to order.created_at, admin_order_path(order.id) %>
-    <%= order.name %>
-    <%= order.payment_method_i18n %>
-    <%= order.order_status_i18n %><br/>
-<% end %>
+<div class="container">
+  
+    <!-- タイトル -->
+    <div class="row mb-5 ml-1 justify-content-start">
+        <div class="display-3 font-weight-bold text-warning">注文履歴の一覧</div>
+    </div>
+  
+    <!-- テーブル -->
+    <div class="container mb-5">
+        <div class="row">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>購入日時</th>
+                        <th>購入者</th>
+                        <th>注文個数</th>
+                        <th>ステータス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <td>
+                                <%= link_to admin_order_path(order.id) do %>
+                                    <%= l order.created_at, format: :short %>
+                                <% end %>
+                            </td>
+                            <td><%= order.customer.full_name %></td>
+                            <td>※注文個数※</td>
+                            <td><%= order.order_status_i18n %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+</div>

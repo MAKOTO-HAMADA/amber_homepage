@@ -1,10 +1,84 @@
-<h1>注文履歴 詳細ページ</h1>
-
-<%= flash[:notice] %><br/>
-
-<%= link_to @order.name, admin_customer_path(@order.id) %>
-
-<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
-    <%= f.submit "ステータス変更" %>
-<% end %>
+<div class="container">
+  
+    <!-- タイトル -->
+    <div class="row mb-5 ml-3 justify-content-start">
+        <div class="display-3 font-weight-bold text-warning">注文履歴の詳細</div>
+    </div>
+    <%= flash[:notice] %><br/>
+  
+    <!-- テーブル -->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col">
+                <table class="table table-sm table-bordered">
+                    <tr>
+                        <th>購入者</th>
+                        <td><%= link_to @order.name, admin_customer_path(@order.id), class: 'h3' %></td>
+                    </tr>
+                    <tr>
+                        <th>注文日</th>
+                        <td><%= l @order.created_at, format: :short %></td>
+                    </tr>
+                    <tr>
+                        <th>配送先</th>
+                        <td>〒<%= @order.postal_code %> <%= @order.address %></td>
+                    </tr>
+                    <tr>
+                        <th>支払方法</th>
+                        <td><%= @order.payment_method_i18n %></td>
+                    </tr>
+                    <tr>
+                        <th>注文ステータス</th>
+                        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+                            <td class="d-flex align-items-center">
+                                <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}, {}, class: 'text-center rounded py-2 mb-0 mr-3' %>
+                                <%= f.submit "ステータス変更", class: 'btn btn-outline-dark' %>
+                            </td>
+                        <% end %>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>商品名</th>
+                            <th>単価(税込)</th>
+                            <th>数量</th>
+                            <th>小計</th>
+                            <th>制作ステータス</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="table table-sm table-bordered">
+                    <tr>
+                        <th>商品合計</th>
+                        <td class='text-right'><%= @order.payment_of_total %>円</td>
+                    </tr>
+                    <tr>
+                        <th>送料</th>
+                        <td class='text-right'><%= @order.postage %>円</td>
+                    </tr>
+                    <tr>
+                        <th>請求金額合計</th>
+                        <td class='text-right'><%= @order.payment_of_total += @order.postage %>円</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+  
+</div>

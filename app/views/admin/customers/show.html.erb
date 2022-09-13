@@ -1,7 +1,78 @@
-<h1>会員 詳細ページ</h1>
+<div class="container">
 
-<%= @customer.full_name %>
-<%= @customer.unsubscribe_flag %><br/>
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold text-warning">会員情報の編集</div>
+    </div>
 
-<%= link_to "編集ページへ", edit_admin_customer_path(@customer.id) %><br/>
-<%= link_to "注文履歴", admin_path %><br/>
+    <div class="row mb-5">
+
+        <div class="col-4">
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">姓</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.last_name %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">セイ</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.last_name_kana %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">メール</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.email %></div>
+            </div>
+        </div>
+    
+        <div class="col-4">
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">名前</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.first_name %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">ナマエ</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.first_name_kana %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">電話番号</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.telephone_number %></div>
+            </div>
+        </div>
+    
+        <div class="col-4">
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">郵便番号</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.postal_code %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">都道府県</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.prefecture_code %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">市町村</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.city %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">番地</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.street %></div>
+            </div>
+            <div class="row mb-4 d-flex">
+                <div class="col-4 col-form-label">建物名</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.other_address %></div>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="row mb-4 d-flex justify-content-center">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-4 col-form-label">ステータス</div>
+                <div class="form-control col-8 ml-auto"><%= @customer.unsubscribe_flag ? "退会済" : "有効" %></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-4 d-flex justify-content-center">
+        <%= link_to "編集", edit_admin_customer_path(@customer.id), class: 'btn btn-secondary btn-lg mr-5' %>
+        <%= link_to "注文履歴", admin_path, class: 'btn btn-secondary btn-lg ml-5' %><br/>
+    </div>
+
+</div>
