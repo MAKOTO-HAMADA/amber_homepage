@@ -1,14 +1,53 @@
-<h1>商品ジャンル一覧</h1>
-
-<!-- 8/13 -->
-<p>一覧表示 + 編集リンク</p>
-<% @item_genres.each do |item_genre| %>
-    <%= link_to item_genre.name, edit_admin_item_genre_path(item_genre.id) %>
-<% end %>
-
-<p>登録フォーム</p>
-<%= form_with model: @item_genre, url: admin_item_genres_path do |f| %>
-    <%= f.text_field :name %><br/>
-    <%= f.text_area  :introduction %><br/>
-    <%= f.submit     "新規登録" %>
-<% end %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5 justify-content-center">
+        <div class="display-3 font-weight-bold text-warning">商品ジャンルの一覧・追加</div>
+    </div>
+  
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            
+            <!-- 左辺 -->
+            <div class="col-4">
+                <%= form_with model: @item_genre, url: admin_item_genres_path do |f| %>
+                    <p class="h3  mb-4">新規登録</p>
+                    <div class="row mb-4">
+                        <%= f.label :name, "ジャンル名", class: 'col-5 col-form-label' %>
+                        <%= f.text_field :name, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row mb-4">
+                        <%= f.label :introduction, "説明", class: 'col-5 col-form-label' %>
+                        <%= f.text_area  :introduction, class: 'col-6 form-control' %>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <%= f.submit "新規登録", class: 'btn btn-danger btn-lg rounded-pill' %>
+                    </div>
+                <% end %>
+            </div>
+            
+            <!-- 右辺 -->
+            <div class="col-8">
+                <p class="h3  mb-4">ジャンル一覧</p>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <th width="25%">ジャンル名</th>
+                        <th>説明</th>
+                        <th width="15%"></th>
+                    </thead>
+                    <% @item_genres.each do |item_genre| %>
+                        <tbody>
+                            <td><%= item_genre.name %></td>
+                            <td><%= item_genre.introduction %></td>
+                            <td class="text-center">
+                                <%= link_to "編集", edit_admin_item_genre_path(item_genre.id), class: 'btn btn-secondary' %>
+                            </td>
+                        </tbody>
+                    <% end %>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

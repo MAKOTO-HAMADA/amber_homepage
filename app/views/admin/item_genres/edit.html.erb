@@ -1,8 +1,31 @@
-<h1>商品ジャンル編集</h1>
-
-<%= form_with model: @item_genre, url: admin_edit_item_genre_path(@item_genre.id), method: :patch do |f| %>
-
-  <%= f.text_field :name %><br />
-  <%= f.submit '保存' %>
+<div class="container">
+    
+  <!-- タイトル -->
+  <div class="row mb-5 justify-content-center">
+    <div class="display-3 font-weight-bold text-warning">商品ジャンルの編集</div>
+  </div>
   
-<% end %>
+  <!-- 編集フォーム -->
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+        
+      <div class="col-8">
+        <%= form_with model: @item_genre, url: admin_edit_item_genre_path(@item_genre.id), method: :patch do |f| %>
+          <div class="row mb-4">
+            <%= f.label :name, "ジャンル名", class: 'col-5 col-form-label' %>
+            <%= f.text_field :name, class: 'col-6 form-control' %>
+          </div>
+          <div class="row mb-4">
+            <%= f.label :introduction, "説明", class: 'col-5 col-form-label' %>
+            <%= f.text_area  :introduction, class: 'col-6 form-control' %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <%= f.submit "変更を保存", class: 'btn btn-danger btn-lg rounded-pill' %>
+          </div>
+        <% end %>
+      </div>
+        
+    </div>
+  </div>
+    
+</div>

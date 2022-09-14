@@ -7,14 +7,14 @@
     
     <!-- 確認用 テーブル -->
     <div class="row mb-5">
-        <div class="col-6">
+        <div class="col-4">
             <%= image_tag @item.image, class: 'autosizing-image rounded shadow' %>
         </div>
-        <div class="col-6">
+        <div class="col-8">
             <table class="table table-striped">
                 <tr>
-                    <th>商品名</th>
-                    <td><%= @item.name %></td>
+                    <th width="25%">商品名</th>
+                    <td width="75%"><%= @item.name %></td>
                 </tr>
                 <tr>
                     <th>商品説明</th>
