@@ -1,13 +1,37 @@
-<h1>商品一覧</h1>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5">
+        <div class="display-3 font-weight-bold text-warning">商品情報の編集</div>
+    </div>
+    
+    <!-- 確認用 テーブル -->
+    <div class="row mb-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>商品ＩＤ</th>
+                    <th>商品名</th>
+                    <th>税抜価格</th>
+                    <th>ジャンル</th>
+                    <th>ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @items.each do |item| %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                        <td><%= item.price %></td>
+                        <td><%= item.item_genre.name %></td>
+                        <td><%= item.sales_status ? "販売中" : "販売停止中" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div class="row mb-5 d-flex justify-content-center">
+        <%= link_to "新規投稿へ", new_admin_item_path, class: 'btn btn-secondary btn-lg' %>
+    </div>
 
-<p>一覧表示 + ？</p>
-<% @items.each do |item| %>
-    <% if item.image.attached? %>
-        <%= image_tag item.image, size: "200x200" %><br/>
-    <% else %>
-        <%= image_tag 'no_image', size: "200x200" %><br/>
-  　<% end %>
-    <%= link_to item.name, admin_item_path(item.id) %><br/>
-<% end %>
-
-<%= link_to "新規投稿へ", new_admin_item_path %>
+</div>

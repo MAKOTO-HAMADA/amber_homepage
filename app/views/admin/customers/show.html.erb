@@ -1,11 +1,14 @@
 <div class="container">
-
+    
+    <!-- タイトル -->
     <div class="row mb-5 justify-content-center">
         <div class="display-3 font-weight-bold text-warning">会員情報の編集</div>
     </div>
-
+    
+    <!-- 確認用 テーブル -->
     <div class="row mb-5">
-
+        
+        <!-- 左段 -->
         <div class="col-4">
             <div class="row mb-4 d-flex">
                 <div class="col-4 col-form-label">姓</div>
@@ -20,7 +23,7 @@
                 <div class="form-control col-8 ml-auto"><%= @customer.email %></div>
             </div>
         </div>
-    
+        <!-- 中段 -->
         <div class="col-4">
             <div class="row mb-4 d-flex">
                 <div class="col-4 col-form-label">名前</div>
@@ -35,7 +38,7 @@
                 <div class="form-control col-8 ml-auto"><%= @customer.telephone_number %></div>
             </div>
         </div>
-    
+        <!-- 右段 -->
         <div class="col-4">
             <div class="row mb-4 d-flex">
                 <div class="col-4 col-form-label">郵便番号</div>
@@ -61,7 +64,8 @@
     
     </div>
 
-    <div class="row mb-4 d-flex justify-content-center">
+    <!-- ステータス確認フォーム -->
+    <div class="row mb-5 d-flex justify-content-center">
         <div class="col-4">
             <div class="row">
                 <div class="col-4 col-form-label">ステータス</div>
@@ -69,8 +73,9 @@
             </div>
         </div>
     </div>
-    
-    <div class="row mb-4 d-flex justify-content-center">
+
+    <!-- 遷移ボタン -->
+    <div class="row mb-5 d-flex justify-content-center">
         <%= link_to "編集", edit_admin_customer_path(@customer.id), class: 'btn btn-secondary btn-lg mr-5' %>
         <%= link_to "注文履歴", admin_path, class: 'btn btn-secondary btn-lg ml-5' %><br/>
     </div>

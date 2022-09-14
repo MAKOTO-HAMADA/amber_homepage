@@ -1,11 +1,42 @@
-<h1>商品詳細</h1>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5">
+        <div class="display-3 font-weight-bold text-warning">商品情報の商品</div>
+    </div>
+    
+    <!-- 確認用 テーブル -->
+    <div class="row mb-5">
+        <div class="col-6">
+            <%= image_tag @item.image, class: 'autosizing-image rounded shadow' %>
+        </div>
+        <div class="col-6">
+            <table class="table table-striped">
+                <tr>
+                    <th>商品名</th>
+                    <td><%= @item.name %></td>
+                </tr>
+                <tr>
+                    <th>商品説明</th>
+                    <td><%= @item.introduction %></td>
+                </tr>
+                <tr>
+                    <th>ジャンル</th>
+                    <td><%= @item.item_genre.name %></td>
+                </tr>
+                <tr>
+                    <th>税込価格<br/>(税抜価格)</th>
+                    <td><%= @item.add_tax_price %>（<%= @item.price%>）円</td>
+                </tr>
+                <tr>
+                    <th>販売ステータス</th>
+                    <td><%= @item.sales_status ? "販売中" : "販売停止中" %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 d-flex justify-content-center">
+        <%= link_to "編集へ", edit_admin_item_path(@item.id), class: 'btn btn-secondary btn-lg' %>
+    </div>
 
-<% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "200x200" %><br/>
-<% else %>
-    <%= image_tag 'no_image', size: "200x200" %><br/>
-<% end %>
-
-<%= @item.name %><br/>
-
-<%= link_to "編集へ", edit_admin_item_path(@item.id) %>
+</div>
