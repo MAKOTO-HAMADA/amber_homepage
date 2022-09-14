@@ -1,3 +1,42 @@
-<h1>問合せ 詳細ページ</h1>
-
-<%= link_to @customer.full_name, admin_customer_path(@customer.id)%>
+<div class="container">
+  
+    <!-- タイトル -->
+    <div class="row mb-5 ml-3 justify-content-start">
+        <div class="display-3 font-weight-bold text-warning">問合せの詳細</div>
+    </div>
+    <%= flash[:notice] %><br/>
+  
+    <!-- テーブル -->
+    <div class="row mb-5">
+        <div class="col">
+            <table class="table table-striped">
+                <tr>
+                    <th>日時</th>
+                    <td><%= l @contact.created_at, format: :short %></td>
+                </tr>
+                <tr>
+                    <th>問合せ氏名</th>
+                    <td><%= @contact.name %></td>
+                </tr>
+                <tr>
+                    <th>問合せ内容</th>
+                    <td><%= @contact.inquiry %></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= @contact.email %></td>
+                </tr>
+                <tr>
+                    <th>問合せジャンル</th>
+                    <td><%= @contact.contact_genre.name %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <!-- ボタン -->
+    <div class="row mb-5 d-flex justify-content-center">
+        <%= link_to "会員情報へ", admin_customer_path(@customer.id), class: 'btn btn-secondary btn-lg' %>
+    </div>
+  
+</div>

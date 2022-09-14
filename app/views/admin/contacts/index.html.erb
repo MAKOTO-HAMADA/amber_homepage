@@ -1,6 +1,32 @@
-<h1>問合せ 一覧ページ</h1>
-
-<% @contacts.each do |contact| %>
-    <%= link_to contact.name, admin_contact_path(contact.id) %>
-    <%= contact.id %><br/>
-<% end %>
+<div class="container">
+  
+    <!-- タイトル -->
+    <div class="row mb-5 ml-1 justify-content-start">
+        <div class="display-3 font-weight-bold text-warning">問合せの一覧</div>
+    </div>
+  
+    <!-- テーブル -->
+    <div class="container mb-5">
+        <div class="row">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>問合せＩＤ</th>
+                        <th>問合せ氏名</th>
+                        <th>問合せジャンル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @contacts.each do |contact| %>
+                        <tr>
+                            <td><%= contact.id %></td>
+                            <td><%= link_to contact.name, admin_contact_path(contact.id) %></td>
+                            <td><%= contact.contact_genre.name%></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+</div>
