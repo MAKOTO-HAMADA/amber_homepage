@@ -1,16 +1,56 @@
-<h1>商品登録ページ</h1>
-
-<!-- 8/12 -->
-<%= form_with model: @item, url: admin_items_path do |f| %>
-    <%= f.file_field :image, accept: "image/*" %><br/> 
-    <%= f.select :item_genre_id, @item_genres %><br/> <!-- 8/13 -->
-    <%= f.text_field :name %><br/>
-    <%= f.text_area  :introduction %><br/>
-    <%= f.text_field :price %><br/>
-    <%= f.number_field :quantity_of_sales %><br/>
-    <%= f.radio_button :sales_status, :true %>
-    <%= f.label :sales_status, "販売中" %><br/>
-    <%= f.radio_button :sales_status, :false %>
-    <%= f.label :sales_status, "販売停止中" %><br/>
-    <%= f.submit "新規登録" %>
-<% end %>
+<div class="container">
+    
+    <!-- タイトル -->
+    <div class="row mb-5">
+      <div class="display-3 font-weight-bold text-warning">商品の登録</div>
+    </div>
+    
+    <!-- 確認用 テーブル -->
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+      <div class="row mb-5">
+        <table class="table table-striped">
+            <tr>
+              <th>商品画像</th>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th>商品名</th>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <th>商品説明</th>
+              <td><%= f.text_area  :introduction %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= f.select :item_genre_id, @item_genres %></td>
+            </tr>
+            <tr>
+              <th>税抜価格</th>
+              <td><%= f.text_field :price %></td>
+            </tr>
+            <tr>
+              <th>販売ステータス</th>
+              <td>
+                <div class="row ml-1">
+                  <div class="input-group-text">
+                    <%= f.radio_button :sales_status, true %>
+                  </div>
+                  <%= f.label "販売中", class: 'col-form-label col-2' %>
+                  <div class="input-group-text">
+                    <%= f.radio_button :sales_status, false %>
+                  </div>
+                  <%= f.label "販売停止中", class: 'col-form-label col-2' %>
+                </div>
+              </td>
+            </tr>
+          
+        </table>
+      </div>
+      
+      <!-- 保存ボタン -->
+      <div class="row mb-5 d-flex justify-content-center">
+        <%= f.submit '新規登録', class: 'btn btn-secondary btn-lg' %>
+      </div>
+    <% end %>
+</div>
