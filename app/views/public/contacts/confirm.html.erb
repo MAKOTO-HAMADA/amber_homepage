@@ -48,10 +48,11 @@
         </div>
 
         <!-- createアクションに渡す内容 -->
+        <%= f.hidden_field :customer_id,      value: current_customer.id %>
         <%= f.hidden_field :contact_genre_id, value: @contact.contact_genre_id %>
-        <%= f.hidden_field :name, value: @contact.name %>
-        <%= f.hidden_field :email, value: @contact.email %>
-        <%= f.hidden_field :inquiry, value: @contact.inquiry %>
+        <%= f.hidden_field :name,             value: @contact.name %>
+        <%= f.hidden_field :email,            value: @contact.email %>
+        <%= f.hidden_field :inquiry,          value: @contact.inquiry %>
         
     <% end %>
     

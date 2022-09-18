@@ -5,7 +5,7 @@ class ShippingAddress < ApplicationRecord
     validates :postal_code,      presence: true, length: { is: 7 }
     validates :address,          presence: true
     validates :name,             presence: true
-    validates :telephone_number, presence: true
+    validates :telephone_number, presence: true, length: { is: 11 }
     validates :email,            presence: true
     
 end

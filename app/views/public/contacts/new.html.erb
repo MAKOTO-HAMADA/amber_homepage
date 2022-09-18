@@ -5,6 +5,9 @@
         <div class="display-3 font-weight-bold">お問合せフォーム</div>
     </div>
     
+    <!-- エラーメッセージ(部分プレート) -->
+    <%= render 'layouts/error_messages', resource: @contact %>
+  
     <!-- 入力フォーム-->
     <%= form_with model: @contact, url: contacts_confirm_path, method: :post do |f| %>
         <form class="container">
@@ -29,7 +32,7 @@
                     <%= f.label :contact_genre_id, "メールアドレス"%>
                 </div>
                 <div class="col-sm-5">
-                    <%= f.email_field :email, class: 'form-control', placeholder: "name@example.com" %>
+                    <%= f.email_field :email, class: 'form-control', placeholder: "example@example.com" %>
                 </div>
             </div>
             <div class="form-group row justify-content-center mb-5">
