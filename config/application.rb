@@ -23,5 +23,7 @@ module Amber
     config.i18n.default_locale = :ja
     # タイムゾーンをＵＴＣ(協定時) → 日本時間に変更する
     config.time_zone = 'Tokyo'
+    # errorメッセージが表示される際のレイアウト崩れを防ぐ
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

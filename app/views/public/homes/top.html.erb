@@ -2,9 +2,7 @@
     
     <!-- １ブロック目 -->
     <div class="row min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="col-auto">
-            <span class="display-1">top image</span>
-        </div>
+        <%= image_tag 'top.jpg', class: 'col-auto img-fluid' %>
     </div>
     
     <!-- ２ブロック目 -->
@@ -54,8 +52,17 @@
             </div>
         </div>
         <!-- 右辺（テキスト）-->
-        <div class="col-6 d-flex justify-content-center">
-            <span class="display-3">about</span>
+        <div class="col-6">
+            <div class="container">
+                <div class="display-3 text-center mb-3">
+                    About
+                </div>
+                <div class="h4">
+                    スタッフ１名のプライベートサロンでゆっくりリラックス。</br>
+                    丁寧なカウンセリングと施術で、一人ひとりの理想の目元に仕上げます。</br>
+                    エクステやパーマもこだわりあり。モチの良さ・軽さ・柔らかさなど、本当に良いものだけを取り揃え。仕上げはコーティング付。カラーエクステもご用意。</br>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -69,13 +76,13 @@
             </div>
             <div class="row d-flex align-items-center justify-content-around">
                 <div class="col">
-                    <%= image_tag 'no_image.png', class: 'img-thumbnail' %>
+                    <%= image_tag 'instagram_1.jpg', class: 'img-thumbnail' %>
                 </div>
                 <div class="col">
-                    <%= image_tag 'no_image.png', class: 'img-thumbnail' %>
+                    <%= image_tag 'instagram_2.jpg', class: 'img-thumbnail' %>
                 </div>
                 <div class="col">
-                    <%= image_tag 'no_image.png', class: 'img-thumbnail' %>
+                    <%= image_tag 'instagram_3.jpg', class: 'img-thumbnail' %>
                 </div>
             </div>
         </div>

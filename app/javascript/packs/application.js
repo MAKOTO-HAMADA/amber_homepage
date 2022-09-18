@@ -19,6 +19,11 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});
+
+
 $(function() {
     $('#customer_postal_code').jpostal({
       postcode : [

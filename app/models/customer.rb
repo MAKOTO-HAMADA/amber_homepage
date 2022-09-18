@@ -4,10 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :postal_code,     presence: true
-  validates :prefecture_code, presence: true
-  validates :city,            presence: true
-  validates :street,          presence: true
+  validates :password,        presence: true, on: :create, length: { minimum: 6 }
+  validates :postal_code,     presence: true, length: { is: 7 }
+  validates :email,           presence: true
+  validates :telephone_number,presence: true
+  validates :prefecture_code, :city, :street, presence: true
+  validates :last_name, :first_name,
+            :last_name_kana, :first_name_kana, presence: true
   
   has_many :orders            , dependent: :destroy
   has_many :contacts          , dependent: :destroy

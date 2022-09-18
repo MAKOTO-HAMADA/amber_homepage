@@ -3,55 +3,58 @@
   <div class="row mb-5 justify-content-center">
     <div class="display-3 font-weight-bold">会員情報の編集</div>
   </div>
+
+  <!-- エラーメッセージ(部分プレート) -->
+  <%= render 'layouts/error_messages', resource: @customer %>
   
-  <%= form_with model: @customer, url: update_information_path do |f| %>
+  <%= form_with model: @customer, url: update_information_path, method: :patch do |f| %>
     <div class="row mb-5">
       
       <div class="col-4">
         <div class="row mb-4 d-flex">
           <%= f.label "姓", class: 'col-form-label col-4' %>
-          <%= f.text_field :last_name, autofocus: true, maxlength: "8", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :last_name, autofocus: true, class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "セイ", class: 'col-form-label col-4' %>
-          <%= f.text_field :last_name_kana, maxlength: "8", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :last_name_kana, class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "メール", class: 'col-form-label col-4' %>
-          <%= f.text_field :email, autocomplete: "email", class: 'form-control col-8 ml-auto' %>
+          <%= f.email_field :email, autocomplete: "email", class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "パスワード", class: 'col-form-label col-4' %>
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control col-8 ml-auto' %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control col-8 ml-auto', placeholder: '"変更する場合のみ入力"' %>
       　</div>
       </div>
       
       <div class="col-4">
         <div class="row mb-4 d-flex">
           <%= f.label "名前", class: 'col-form-label col-4' %>
-          <%= f.text_field :first_name, maxlength: "8", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :first_name, class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "ナマエ", class: 'col-form-label col-4' %>
-          <%= f.text_field :first_name_kana, maxlength: "8", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :first_name_kana, class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "電話番号", class: 'col-form-label col-4' %>
-          <%= f.text_field :telephone_number, maxlength: "8", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :telephone_number, maxlength: "11", class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "パス確認", class: 'col-form-label col-4' %>
-          <%= f.text_field :password_confirmation, autocomplete: "new-password", class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :password_confirmation, autocomplete: "new-password", class: 'form-control col-8 ml-auto', placeholder: '"変更する場合のみ入力"' %>
       　</div>
       </div>
       
       <div class="col-4">
         <div class="row mb-4 d-flex">
           <%= f.label "郵便番号", class: 'col-form-label col-4' %>
-          <%= f.text_field :postal_code, class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :postal_code, maxlength: "7", class: 'form-control col-8 ml-auto' %>
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "都道府県", class: 'col-form-label col-4' %>
@@ -67,7 +70,7 @@
         </div>
         <div class="row mb-4 d-flex">
           <%= f.label "建物名", class: 'col-form-label col-4' %>
-          <%= f.text_field :other_address, class: 'form-control col-8 ml-auto' %>
+          <%= f.text_field :other_address, class: 'form-control col-8 ml-auto', placeholder: '"空欄可"' %>
         </div>
       </div>
       

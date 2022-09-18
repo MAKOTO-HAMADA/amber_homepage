@@ -2,14 +2,15 @@ class Public::ShippingAddressesController < ApplicationController
   
   def index
     @shipping_addresses = ShippingAddress.all
-    @shipping_address = ShippingAddress.new
+    @shipping_address   = ShippingAddress.new
   end
   
   def create
-    @shipping_address = ShippingAddress.new(shippingaddress_params)
+    @shipping_addresses = ShippingAddress.all
+    @shipping_address   = ShippingAddress.new(shippingaddress_params)
     @shipping_address.customer_id = current_customer.id
     @shipping_address.save
-    redirect_to shipping_addresses_path
+    render :index
   end
 
   def edit
@@ -17,9 +18,13 @@ class Public::ShippingAddressesController < ApplicationController
   end
   
   def update
-    s_address = ShippingAddress.find(params[:id])
-    s_address.update(shippingaddress_params)
-    redirect_to shipping_addresses_path
+    @shipping_address = ShippingAddress.find(params[:id])
+    if @shipping_address.update(shippingaddress_params)
+      flash[:notice] = "編集を完了しました。"
+      redirect_to shipping_addresses_path
+    else
+      render :edit
+    end
   end
   
   def destroy

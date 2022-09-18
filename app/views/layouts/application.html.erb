@@ -101,9 +101,14 @@
         </div>
         
       </nav>
+      
     </header>
     
     <main>
+      <!-- フラッシュメッセージ(部分テンプレート) -->
+      <div class="flash text-white font-weight-bold bg-info text-center">
+        <%= render partial: 'layouts/flash' %>
+      </div>
       <%= yield %>
     </main>
     

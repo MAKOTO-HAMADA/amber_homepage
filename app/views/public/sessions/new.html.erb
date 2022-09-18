@@ -4,7 +4,6 @@
   <div class="row mb-5 justify-content-center">
     <div class="display-3 font-weight-bold">ログイン</div>
   </div>
-  <%= flash[:notice] %>
   
   <div class="container mb-5">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,7 +23,7 @@
             <%= f.label :remember_me, "パスワードを保存", class: 'col-5' %>
           </div>
         <% end %>
-      
+        
         <div class="row mb-4 actions d-flex justify-content-center">
           <%= f.submit "ログイン", class: 'col-2 mr-5 btn btn-secondary btn-lg rounded-pill' %>
           <%= link_to "アカウント作成", new_customer_registration_path, class: 'col-2 ml-5 btn btn-secondary btn-lg' %>
@@ -34,29 +33,3 @@
   </div>
   
 </div>
-
-
-
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>

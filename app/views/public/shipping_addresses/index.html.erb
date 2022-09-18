@@ -4,7 +4,11 @@
     <div class="row mb-5 justify-content-center">
         <div class="display-3 font-weight-bold">配送先作成</div>
     </div>
-  
+    
+    <!-- エラーメッセージ(部分プレート) -->
+    <%= render "layouts/error_messages", resource: @shipping_address %>
+    
+    <!-- メイン -->
     <div class="container">
         <div class="row mb-5 justify-content-center">
             
@@ -16,7 +20,7 @@
                     </p>
                     <div class="row mb-4">
                         <%= f.label :postal_code, "郵便番号", class: 'col-5 col-form-label' %>
-                        <%= f.text_field :postal_code, class: 'col-6 form-control' %>
+                        <%= f.text_field :postal_code, maxlength: "7", class: 'col-6 form-control' %>
                     </div>
                     <div class="row mb-4">
                         <%= f.label :address, "住所", class: 'col-5 col-form-label' %>
@@ -28,7 +32,7 @@
                     </div>
                     <div class="row mb-4">
                         <%= f.label :telephone_number, "電話番号", class: 'col-5 col-form-label' %>
-                        <%= f.text_field :telephone_number, class: 'col-6 form-control' %>
+                        <%= f.text_field :telephone_number, maxlength: "11", class: 'col-6 form-control' %>
                     </div>
                     <div class="row mb-4">
                         <%= f.label :email, "メール", class: 'col-5 col-form-label' %>
