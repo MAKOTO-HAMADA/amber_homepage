@@ -26,9 +26,9 @@
                             <tbody>
                                 <th><%= cart_item.item.name %></th>
                                 <td>¥<%= cart_item.item.add_tax_price %></td>
-                                <td><%= f.select :quantity_by_type, *[1..5], {}, class: 'form-control' %></td>
+                                <td><%= f.select :quantity_by_type, *[1..10], {}, class: 'form-control' %></td>
                                 <td class="text-center"><%= f.submit "変更", class: 'btn btn-secondary' %></td>
-                                <td>¥<%= cart_item.subtotal %></td>
+                                <td>¥<%= cart_item.subtotal %>（<%= cart_item.quantity_by_type %>個）</td>
                                 <td class="text-center"><%= link_to "削除", cart_item_path(cart_item.id), class: 'btn btn-danger', method: :delete %></td>
                             </tbody>
                             <% @total_price += cart_item.subtotal %>

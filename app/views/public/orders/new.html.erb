@@ -2,29 +2,31 @@
     <div class="row justify-content-md-center">
         
         <div>
+            <!-- タイトル -->
             <div class="mb-3 display-3 font-weight-bold">
                 注文情報入力
             </div>
+            
             <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
                 <!--［支払方法］　をラジオボタン -->
                 <div class="h3 mb-3"><i class="fas fa-money-bill-wave"></i>　支払い方法</div>
                 <div class="row ml-5 mb-3">
                     <div class="col-4">
-                        <div class="form-control mb-4 text-truncate">
+                        <div class="form-control mb-4">
                             <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
-                            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+                            <%= f.label        :payment_method, Order.payment_methods_i18n[:credit_card] %>
                         </div>
-                        <div class="form-control mb-4 text-truncate">
+                        <div class="form-control mb-4">
                             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+                            <%= f.label        :payment_method, Order.payment_methods_i18n[:transfer] %>
                         </div>
-                        <div class="form-control mb-4 text-truncate">
+                        <div class="form-control mb-4">
                             <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
-                            <%= f.label :payment_method, Order.payment_methods_i18n[:cashless] %>
+                            <%= f.label        :payment_method, Order.payment_methods_i18n[:cashless] %>
                         </div>
-                        <div class="form-control mb-4 text-truncate">
+                        <div class="form-control mb-4">
                             <%= f.radio_button :payment_method, Order.payment_methods.key(3) %>
-                            <%= f.label :payment_method, Order.payment_methods_i18n[:cash_on_delivery] %>
+                            <%= f.label        :payment_method, Order.payment_methods_i18n[:cash_on_delivery] %>
                         </div>
                     </div>
                 </div>
@@ -32,15 +34,16 @@
                 <div class="h3 mb-3"><i class="fas fa-truck"></i>　お届け先</div>
                 <div class="row ml-5 mb-5">
                     <div class="col-4">
-                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 0, checked: true %> ご自身の住所</div>
-                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 1 %> 登録済住所選択</div>
-                        <div class="form-control mb-4 text-truncate"><%= radio_button_tag 'select_address', 2 %> 新しいお届け先</div>
+                        <div class="form-control mb-4"><%= radio_button_tag 'select_address', 0, checked: true %> ご自身の住所</div>
+                        <div class="form-control mb-4"><%= radio_button_tag 'select_address', 1 %> 登録済住所選択</div>
+                        <div class="form-control mb-4"><%= radio_button_tag 'select_address', 2 %> 新しいお届け先</div>
                     </div>
                     <div class="col-8">
+                        <!-- ご自身の住所 -->
                         <div class="form-control mb-4 text-truncate">〒<%= current_customer.postal_code%><%= current_customer.full_address %></div>
-                        
-                        <%= select_tag 'adress_id', options_for_select(ShippingAddress.all.map{|a| ["〒#{a.postal_code} #{a.address}", a.id]}), class: 'form-control text-truncate' %><br/>
-                        
+                        <!-- 登録先住所選択 -->
+                        <%= select_tag 'adress_id', options_for_select(@shipping_addresses.map{|a| ["〒#{a.postal_code} #{a.address}", a.id]}), class: 'form-control text-truncate' %><br/>
+                        <!-- 新しいお届け先 -->
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">郵便番号</span>

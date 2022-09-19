@@ -11,7 +11,7 @@
             <div class="row mb-3 display-3 font-weight-bold">Items</div>
             <div class="row">
                 <% @items.each do |item| %>
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <%= link_to item_path(item.id), class: 'card shadow' do %>
                             <%= image_tag item.image, class: 'autosizing-image img-fluid rounded-top' %>
                             <div class="card-body text-white bg-dark">

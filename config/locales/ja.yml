@@ -3,10 +3,10 @@
     enums:
       order:
         payment_method:
-            credit_card:      "クレジットカード"
-            transfer:         "銀行振込"
-            cashless:         "キャッシュレス"
-            cash_on_delivery: "代金引換"
+            credit_card:         "クレジット"
+            transfer:            "銀行振込"
+            cashless:            "キャッシュレス"
+            cash_on_delivery:    "代金引換"
         order_status:
             waiting_for_payment: "支払待ち"
             paid:                "支払済"
@@ -16,29 +16,33 @@
     time:
       formats:
         default: "%Y/%m/%d %H:%M:%S"
-        short: "%m月%d日　%H時%M分"
+        short:   "%m月%d日 %H時%M分"
     
     activerecord:
       attributes:
         customer:
-          email: メールアドレス
-          password: パスワード
-          last_name: 姓
-          first_name: 名
-          last_name_kana: セイ
-          first_name_kana: ナマエ
-          postal_code: 郵便番号
-          prefecture_code: 都道府県
-          city: 市町村
-          street: 番地
-          other_address: 建物名
+          email:            メールアドレス
+          password:         パスワード
+          last_name:        姓
+          first_name:       名
+          last_name_kana:   セイ
+          first_name_kana:  ナマエ
+          postal_code:      郵便番号
+          prefecture_code:  都道府県
+          city:             市町村
+          street:           番地
+          other_address:    建物名
           telephone_number: 電話番号
         shipping_address:
-          postal_code: 郵便番号
-          address: 住所
-          name: 宛名
+          postal_code:      郵便番号
+          address:          住所
+          name:             宛名
           telephone_number: 電話番号
-          email: メールアドレス
+          email:            メールアドレス
+        contact:
+          name:             宛名
+          email:            メールアドレス
+          inquiry:          お問合せ内容
       errors:
         models:
           customer:
@@ -50,4 +54,4 @@
               postal_code:
                 wrong_length: "は数字%{count}文字に設定して下さい。"
         messages:
-          record_invalid: 'バリデーションに失敗しました: %{errors}'
+          record_invalid:     "バリデーションに失敗しました: %{errors}"

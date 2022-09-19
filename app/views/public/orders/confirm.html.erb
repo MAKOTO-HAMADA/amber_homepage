@@ -5,6 +5,7 @@
     </div>
     
     <div class="row mb-3">
+        
         <!-- 左列 -->
         <div class="col-4 p-3 border">
             <div class="h4 mb-3"><i class="fas fa-truck"></i>　お届け情報</div>
@@ -25,7 +26,7 @@
                     <div class="font-weight-bold">お届け方法</div>
                 </div>
                 <div class="col-8">
-                    佐川急便<br/>
+                    ヤマト運輸<br/>
                 </div>
             </div>
             <div class="row">
@@ -33,17 +34,18 @@
                     <div class="font-weight-bold">お届け日時</div>
                 </div>
                 <div class="col-8">
-                    指定できません
+                    ２営業日以内に発送致します
                 </div>
             </div>
             
         </div>
+        
         <!-- 中列 -->
         <div class="col-4 p-3 border">
             <div class="h4 mb-3"><i class="fas fa-money-check"></i>　ご請求情報</div>
             <div class="row">
                 <div class="col-4">
-                    <div class="font-weight-bold">ご請求先</div>
+                    <div class="font-weight-bold">支払い方法</div>
                     <%= link_to "変更", new_order_path, class: 'btn btn-secondary btn-sm' %>
                 </div>
                 <div class="col-8">
@@ -51,11 +53,12 @@
                 </div>
             </div>
         </div>
+        
         <!-- 右列 -->
         <div class="col-4 p-3 border">
             <div class="h4 mb-3"><i class="fas fa-money-bill-wave"></i>　ご請求金額</div>
-            
             <div class="d-flex flex-column">
+                <!-- 商品名 × 数量 = 小計 -->
                 <% current_customer.cart_items.each do |cart| %>
                     <% item = cart.item %>
                     <div class="d-flex justify-content-between">
@@ -65,33 +68,36 @@
                     </div>
                     <% @order.payment_of_total += cart.subtotal %>
                 <% end %>
+                <!-- 商品合計 -->
                 <div class="d-flex">
                     <span class="font-weight-bold">商品合計</span>
                     <span class="ml-auto">= ¥<%= @order.payment_of_total %></span>
                 </div>
+                <!-- 送料 -->
                 <div class="d-flex">
                     <span class="font-weight-bold">送料</span>
                     <span class="ml-auto">= ¥800</span>
                     <% billing_total = @order.payment_of_total + 800 %>
                 </div>
+                <!-- 合計金額 -->
                 <div class="mt-auto d-flex h4">
                     <span class="font-weight-bold">合計金額</span>
-                    <span class="ml-auto"><%= billing_total = @order.payment_of_total + 800 %></span>
+                    <span class="ml-auto">¥<%= billing_total = @order.payment_of_total + 800 %></span>
                 </div>
             </div>
-            
         </div>
+        
     </div>
     
     <!-- 決定ボタン + カラムに値代入 -->
     <div class="d-flex justify-content-center">
         <%= form_with model: @order do |f| %>
-            <%= f.hidden_field :postal_code, value:  @order.postal_code %>
-            <%= f.hidden_field :address, value: @order.address %>
-            <%= f.hidden_field :name, value: @order.name %>
-            <%= f.hidden_field :postage, value: 800 %>
+            <%= f.hidden_field :postal_code     , value: @order.postal_code %>
+            <%= f.hidden_field :address         , value: @order.address %>
+            <%= f.hidden_field :name            , value: @order.name %>
+            <%= f.hidden_field :postage         , value: 800 %>
             <%= f.hidden_field :payment_of_total, value: @order.payment_of_total %>
-            <%= f.hidden_field :payment_method, value: @order.payment_method %>
+            <%= f.hidden_field :payment_method  , value: @order.payment_method %>
             <%= f.submit "注文を確定する", class: 'btn btn-danger btn-lg rounded-pill' %>
         <% end %>
     </div>

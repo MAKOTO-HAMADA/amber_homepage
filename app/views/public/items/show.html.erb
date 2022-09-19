@@ -1,6 +1,8 @@
 <div class="container">
     <div class="row mb-5">
         
+        <%= render 'layouts/error_messages', resource: @cart_item %>
+        
         <!-- 左_ジャンル検索作成予定 -->
         <div class="col-2">
             <!---->
@@ -24,7 +26,7 @@
                     <%= form_with model: @cart_item, class: 'mt-auto' do |f| %>
                         <%= f.hidden_field :customer_id, :value => current_customer.id %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
-                        <%= f.select :quantity_by_type, *[1..5], {}, class: 'form-control' %>
+                        <%= f.select :quantity_by_type, *[1..10], {}, class: 'form-control' %>
                         <%= f.submit "カートに追加する", class: 'btn btn-secondary btn-lg btn-block' %>
                     <% end %>
                 </div>
