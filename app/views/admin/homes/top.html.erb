@@ -11,6 +11,7 @@
             <table class="table table-sm table-striped">
                 <thead>
                     <tr>
+                        <th>注文ＩＤ</th>
                         <th>購入日時</th>
                         <th>購入者</th>
                         <th>注文個数</th>
@@ -20,6 +21,7 @@
                 <tbody>
                     <% @orders.each do |order| %>
                         <tr>
+                            <td><%= order.id %></td>
                             <td>
                                 <%= link_to admin_order_path(order.id) do %>
                                     <%= l order.created_at, format: :short %>
