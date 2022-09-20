@@ -74,7 +74,15 @@
             </tr>
           </thead>
           <tbody>
-            
+            <% @order.order_histories.each do |o_history| %>
+              <% item = o_history.item %>
+              <tr>
+                <td><%= item.name %></td>
+                <td>¥ <%= item.add_tax_price %></td>
+                <td><%= o_history.quantity_by_type %>個</td>
+                <td>¥ <%= item.add_tax_price * o_history.quantity_by_type %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>

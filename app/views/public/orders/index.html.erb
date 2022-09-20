@@ -23,23 +23,28 @@
                 <tbody>
                     <% @orders.each do |order| %>
                         <tr>
+                            <!-- 注文日 -->
                             <td class="align-middle"><%= l order.created_at, format: :short %></td>
+                            <!-- 配送先 -->
                             <td>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">〒 <%= order.postal_code %></li>
                                     <li class="list-group-item"><%= order.address %></li>
                                 </ul>
                             </td>
+                            <!-- 注文商品 -->
                             <td class="align-middle">
                                 <ul class="list-group list-group-flush">
-                                    <!-- 購入した商品全てを表示させたい -->
-                                    <%# order.items.each do |item| %>
-                                    <!--    <li class="list-group-item"><%#= item.name %></li>-->
-                                    <%# end %>
+                                    <% order.order_histories.each do |o_history| %>
+                                        <li class="ml-4"><%= o_history.item.name %></li>
+                                    <% end %>
                                 </ul>
                             </td>
+                            <!-- 商品金額 -->
                             <td class="align-middle">¥ <%= order.payment_of_total %></td>
+                            <!-- ステータス -->
                             <td class="align-middle text-center"><%= order.order_status_i18n %></td>
+                            <!-- 注文詳細 -->
                             <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class: 'btn btn-secondary btn-lg' %></td>
                         </tr>
                     <% end %>

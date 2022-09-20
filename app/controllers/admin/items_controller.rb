@@ -1,23 +1,24 @@
 class Admin::ItemsController < ApplicationController
   
-  # 8/12
   def new
     @item = Item.new
+    @item_genres = ItemGenre.all.map {|genre| [genre.name, genre.id]}
     # map：ブロック変数（genre）にレコード内の
     # genre.nameとgenre.idを取り出して代入している
-    @item_genres = ItemGenre.all.map {|genre| [genre.name, genre.id]}
   end
   
-  # 8/12
   def index
     @items = Item.all
   end
   
-  # 8/12
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item.id)
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      @item_genres = ItemGenre.all.map {|genre| [genre.name, genre.id]}
+      render :new
+    end
   end
 
   def show
@@ -30,9 +31,14 @@ class Admin::ItemsController < ApplicationController
   end
   
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to admin_item_path(item.id)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "編集を完了しました。"
+      redirect_to admin_item_path(@item.id)
+    else
+      @item_genres = ItemGenre.all.map {|genre| [genre.name, genre.id]}
+      render :edit
+    end
   end
   
   private

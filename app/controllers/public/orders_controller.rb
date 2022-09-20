@@ -20,9 +20,20 @@ class Public::OrdersController < ApplicationController
   # get_shipping_informations_from(resource)：配送先情報を代入する
   
   def create
+    # Orderテーブルの保存
     order = Order.new(order_params)
     order.customer_id = current_customer.id
     order.save
+    # OrderHistoryテーブルを同時保存（商品情報を引っ張り出すテーブル）
+    # <カート>の内容を、<注文履歴>に置き換える each文
+    current_customer.cart_items.each do |cart|
+      order_history = OrderHistory.new
+      order_history.order_id = order.id
+      order_history.item_id = cart.item.id
+      order_history.quantity_by_type = cart.quantity_by_type
+      order_history.save
+    end
+    # <カート>の内容を全削除
     CartItem.where(customer_id: current_customer.id).destroy_all
     redirect_to complete_orders_path
   end

@@ -1,6 +1,7 @@
 class ItemGenre < ApplicationRecord
     
-    # 8/13
     has_many :items, dependent: :destroy
+    
+    validates :name,         presence: true
     
 end

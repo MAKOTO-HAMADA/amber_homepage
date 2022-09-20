@@ -10,4 +10,8 @@ class Item < ApplicationRecord
         (self.price * 1.10).round
     end
     
+    validates :name,         presence: true
+    validates :introduction, presence: true
+    validates :price,        presence: true
+
 end

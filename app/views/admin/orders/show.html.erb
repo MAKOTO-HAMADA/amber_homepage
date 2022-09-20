@@ -47,17 +47,19 @@
                             <th>単価(税込)</th>
                             <th>数量</th>
                             <th>小計</th>
-                            <th>制作ステータス</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <% @order.order_histories.each do |o_history| %>
+                            <% item = o_history.item %>
+                            <tr>
+                                <td><%= item.name %></td>
+                                <td>¥ <%= item.add_tax_price %></td>
+                                <td><%= o_history.quantity_by_type %>個</td>
+                                <td>¥ <%= item.add_tax_price * o_history.quantity_by_type %></td>
+                            </tr>
+                        <% end %>
+                        
                     </tbody>
                 </table>
             </div>

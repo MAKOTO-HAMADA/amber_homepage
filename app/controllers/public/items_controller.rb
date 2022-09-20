@@ -10,7 +10,6 @@ class Public::ItemsController < ApplicationController
   end
   
   def search
-    
   end
   
 end

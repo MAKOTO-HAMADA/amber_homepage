@@ -24,4 +24,7 @@ class Order < ApplicationRecord
         end
     end
     
+    def quantity_by_total
+        self.order_histories.all.sum(:quantity_by_type)
+    end
 end

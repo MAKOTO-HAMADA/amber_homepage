@@ -14,7 +14,7 @@
                         <th>注文ＩＤ</th>
                         <th>購入日時</th>
                         <th>購入者</th>
-                        <th>注文個数</th>
+                        <th>総注文数</th>
                         <th>ステータス</th>
                     </tr>
                 </thead>
@@ -28,7 +28,7 @@
                                 <% end %>
                             </td>
                             <td><%= order.customer.full_name %></td>
-                            <td>※注文個数※</td>
+                            <td><%= order.quantity_by_total %>個</td>
                             <td><%= order.order_status_i18n %></td>
                         </tr>
                     <% end %>

@@ -5,6 +5,9 @@
       <div class="display-3 font-weight-bold text-warning">商品の登録</div>
     </div>
     
+    <!-- エラーメッセージ(部分プレート) -->
+    <%= render 'layouts/error_messages', resource: @item %>
+    
     <!-- 確認用 テーブル -->
     <%= form_with model: @item, url: admin_items_path do |f| %>
       <div class="row mb-5">

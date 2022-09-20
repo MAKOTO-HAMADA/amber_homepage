@@ -5,6 +5,9 @@
       <div class="display-3 font-weight-bold text-warning">商品情報の編集</div>
     </div>
     
+    <!-- エラーメッセージ(部分プレート) -->
+    <%= render 'layouts/error_messages', resource: @item %>
+    
     <!-- 確認用 テーブル -->
     <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
       <div class="row mb-5">

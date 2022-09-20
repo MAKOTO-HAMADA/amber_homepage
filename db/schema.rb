@@ -121,8 +121,13 @@ ActiveRecord::Schema.define(version: 2022_08_17_203252) do
   end
 
   create_table "order_histories", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity_by_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_order_histories_on_item_id"
+    t.index ["order_id"], name: "index_order_histories_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
