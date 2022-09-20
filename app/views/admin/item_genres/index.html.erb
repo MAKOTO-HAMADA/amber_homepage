@@ -34,12 +34,14 @@
                 <p class="h3  mb-4">ジャンル一覧</p>
                 <table class="table table-bordered">
                     <thead class="thead-dark">
+                        <th width="13%">ジャンル<br/>ＩＤ</th>
                         <th width="25%">ジャンル名</th>
                         <th>説明</th>
                         <th width="15%"></th>
                     </thead>
                     <% @item_genres.each do |item_genre| %>
                         <tbody>
+                            <td><%= item_genre.id %></td>
                             <td><%= item_genre.name %></td>
                             <td><%= item_genre.introduction %></td>
                             <td class="text-center">

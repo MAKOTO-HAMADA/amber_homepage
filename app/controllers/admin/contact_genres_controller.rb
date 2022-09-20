@@ -7,8 +7,12 @@ class Admin::ContactGenresController < ApplicationController
   
   def create
     @contact_genre = ContactGenre.new(contact_genre_params)
-    @contact_genre.save
-    redirect_to admin_contact_genres_path
+    if @contact_genre.save
+      redirect_to admin_contact_genres_path
+    else
+      @contact_genres = ContactGenre.all
+      render :index
+    end
   end
 
   def edit
@@ -17,8 +21,12 @@ class Admin::ContactGenresController < ApplicationController
   
   def update
     @contact_genre = ContactGenre.find(params[:id])
-    @contact_genre.update(contact_genre_params)
-    redirect_to admin_contact_genres_path
+    if @contact_genre.update(contact_genre_params)
+      flash[:notice] = "編集が完了しました。"
+      redirect_to admin_contact_genres_path
+    else
+      render :edit
+    end
   end
   
   private

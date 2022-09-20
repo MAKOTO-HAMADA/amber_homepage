@@ -20,9 +20,13 @@ class Admin::ItemGenresController < ApplicationController
   end
   
   def update
-    item_genre = ItemGenre.find(params[:id])
-    item_genre.update(item_genre_params)
-    redirect_to admin_item_genres_path
+    @item_genre = ItemGenre.find(params[:id])
+    if @item_genre.update(item_genre_params)
+      flash[:notice] = "編集が完了しました。"
+      redirect_to admin_item_genres_path
+    else
+      render :edit
+    end
   end
   
   private

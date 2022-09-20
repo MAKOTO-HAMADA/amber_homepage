@@ -43,12 +43,14 @@
           name:             宛名
           email:            メールアドレス
           inquiry:          お問合せ内容
+        contact_genre:
+          name:             ジャンル名
         item:
           name:             商品名
           introduction:     商品説明
           price:            税抜価格
         item_genre:
-          name:             商品名
+          name:             ジャンル名
       errors:
         models:
           customer:

@@ -5,7 +5,10 @@
     <div class="display-3 font-weight-bold text-warning">商品ジャンルの編集</div>
   </div>
   
-  <!-- 編集フォーム -->
+  <!-- エラーメッセージ(部分プレート) -->
+  <%= render 'layouts/error_messages', resource: @item_genre %>
+  
+  <!-- 編集入力フォーム -->
   <div class="container">
     <div class="row mb-5 justify-content-center">
         

@@ -5,6 +5,9 @@
     <div class="display-3 font-weight-bold text-warning">問合せジャンルの編集</div>
   </div>
   
+  <!-- エラーメッセージ(部分プレート) -->
+  <%= render 'layouts/error_messages', resource: @contact_genre %>
+  
   <!-- 編集フォーム -->
   <div class="container">
     <div class="row mb-5 justify-content-center">
