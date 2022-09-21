@@ -90,15 +90,14 @@
           <% end %>
           
           <!-- 検索フォーム -->
-          <form class="form-inline my-2 my-lg-0">
+          <div class="form-inline my-2 my-lg-0">
             <%= search_form_for @q, url: search_items_path, class:"search-form" do |f| %>
-              <%= f.search_field :name_cont, placeholder: '商品名を検索', class:'form-control mr-sm-2' %>
-              <%= f.button type: "submit", class:"btn btn-dark my-2 my-sm-0" do %>
+              <%= f.search_field :name_cont, class:'form-control mr-sm-2', placeholder: '商品名を検索' %>
+              <%= button_tag type: 'submit', class:"btn btn-dark my-2 my-sm-0" do %>
                 <i class="fas fa-search"></i>
               <% end %>
             <% end %>
-          </form>
-        </div>
+          </div>
         
       </nav>
       

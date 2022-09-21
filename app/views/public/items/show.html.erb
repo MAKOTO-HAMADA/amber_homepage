@@ -1,20 +1,21 @@
 <div class="container">
+    
+    <div class="row ml-2 mb-3 display-3 font-weight-bold align-items-end">
+        <%= @item.name %>
+        <h3 class="ml-5">ジャンル名：<%= @item.item_genre.name %></h3>
+    </div>
+    
     <div class="row mb-5">
         
         <%= render 'layouts/error_messages', resource: @cart_item %>
         
         <!-- 左_ジャンル検索作成予定 -->
         <div class="col-2">
-            <!---->
+            <%= render'layouts/sidebar', item_genres: @item_genres %>
         </div>
         
         <!-- 右_商品一覧-->
         <div class="col-10">
-            <div class="row ml-2 mb-3 display-3 font-weight-bold align-items-end">
-                <%= @item.name %>
-                <h3 class="ml-5"><i class="fas fa-map-signs mr-1"></i><%= @item.item_genre.name %></h3>
-            </div>
-            
             <div class="row">
                 <div class="col-5">
                     <%= image_tag @item.image, class: 'autosizing-image rounded shadow' %>

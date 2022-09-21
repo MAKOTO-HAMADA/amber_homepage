@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'item_genres/show'
+  end
   ## デフォルト... 8/10
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  
@@ -45,6 +48,8 @@ Rails.application.routes.draw do
         get :search
       end
     end
+    # アイテムジャンル
+    resources :item_genres, only: [:show]
     
     # カート
     resources :cart_items,         only: [:index, :create, :update, :destroy] do

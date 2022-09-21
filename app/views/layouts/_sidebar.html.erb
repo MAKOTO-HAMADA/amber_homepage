@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item text-white bg-dark">ジャンル検索</li>
+  <% item_genres.each do |genre| %>
+      <li class="list-group-item">
+          <%= link_to genre.name, item_genre_path(genre.id), class: 'text-secondary'  %>
+      </li>
+  <% end %>
+</ul>
