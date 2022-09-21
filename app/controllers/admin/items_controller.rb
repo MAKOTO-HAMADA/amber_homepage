@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def new
     @item = Item.new
     @item_genres = ItemGenre.all.map {|genre| [genre.name, genre.id]}

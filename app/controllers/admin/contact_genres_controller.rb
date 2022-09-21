@@ -1,5 +1,7 @@
 class Admin::ContactGenresController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def index
     @contact_genre = ContactGenre.new
     @contact_genres = ContactGenre.all

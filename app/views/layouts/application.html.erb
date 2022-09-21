@@ -51,28 +51,28 @@
           <% elsif admin_signed_in? %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to admin_path, class: "nav-link" do %> 注文履歴一覧 <% end %>
+                <%= link_to admin_path, class: "nav-link text-warning" do %> 注文履歴一覧 <% end %>
               </li>
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to admin_customers_path, class: "nav-link" do %> 顧客一覧 <% end %>
+                <%= link_to admin_customers_path, class: "nav-link text-warning" do %> 顧客一覧 <% end %>
               </li>
               <li class="nav-item ounded shadow-sm mr-4 h6">
-                <%= link_to admin_items_path, class: "nav-link" do %> 商品一覧 <% end %>
+                <%= link_to admin_items_path, class: "nav-link text-warning" do %> 商品一覧 <% end %>
               </li>
               </li>
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to admin_item_genres_path, class: "nav-link" do %> 商品ジャンル一覧 <% end %>
+                <%= link_to admin_item_genres_path, class: "nav-link text-warning" do %> 商品ジャンル一覧 <% end %>
               </li>
               </li>
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to admin_contacts_path, class: "nav-link" do %> 問合せ一覧 <% end %>
+                <%= link_to admin_contacts_path, class: "nav-link text-warning" do %> 問合せ一覧 <% end %>
               </li>
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to admin_contact_genres_path, class: "nav-link" do %> 問合せジャンル一覧 <% end %>
+                <%= link_to admin_contact_genres_path, class: "nav-link text-warning" do %> 問合せジャンル一覧 <% end %>
               </li>
               </li>
               <li class="nav-item rounded shadow-sm mr-4 h6">
-                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %> ログアウト <% end %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-warning" do %> ログアウト <% end %>
               </li>
             </ul>
           <% else %>

@@ -1,5 +1,7 @@
 class Admin::ItemGenresController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def index
     @item_genre  = ItemGenre.new
     @item_genres = ItemGenre.all
