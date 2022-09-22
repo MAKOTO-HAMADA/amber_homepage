@@ -15,8 +15,8 @@
                     <%= link_to "変更", new_order_path, class: 'btn btn-secondary btn-sm' %>
                 </div>
                 <div class="col-8">
-                    <%= @order.name %><br/>
-                    <%= @order.postal_code %><br/>
+                    <%= @order.name %> 様<br/>
+                    〒 <%= @order.postal_code %><br/>
                     <%= @order.address %><br/>
                     <%= current_customer.email %><br/>
                 </div>
