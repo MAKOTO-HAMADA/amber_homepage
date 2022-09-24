@@ -10,6 +10,6 @@
 ## adominのログイン情報... 
 # $ rails c → Admin.allで確認可能（パスワードは不可）
 Admin.create!(
-   email: 'm1988kyc@gmail.com',
-   password: 'Mkyc1988'
+   email: 'makoto.se1988@outlook.jp',
+   password: 'makoto1988'
 )
