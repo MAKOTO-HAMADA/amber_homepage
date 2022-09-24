@@ -24,7 +24,7 @@ class Customer < ApplicationRecord
   
   ## フルアドレス(郵便番号 以外)
   def full_address
-    self.prefecture_code + self.city + self.street + self.other_address
+    self.prefecture_code + self.city + self.street + self.other_address.to_s
   end
   
 end

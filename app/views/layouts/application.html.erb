@@ -86,6 +86,9 @@
               <li class="nav-item rounded shadow-sm px-3 mr-4 h6">
                 <%= link_to new_customer_session_path, class: "nav-link" do %> Log in<br/>ログイン <% end %>
               </li>
+              <li class="nav-item rounded shadow px-3 mr-4 h6 bg-secondary">
+                <%= link_to homes_guest_sign_in_path, class: "nav-link text-white", method: :post do %> Guest<br/>ゲスト <% end %>
+              </li>
             </ul>
           <% end %>
           

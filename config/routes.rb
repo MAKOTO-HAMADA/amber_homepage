@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   scope module: :public do   # パブリックルーティング... 8/12
     root 'homes#top'
     # 会員
+    
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get   'customers/mypage'           => 'customers#show',        as: 'mypage'
     get   'customers/information/edit' => 'customers#edit',        as: 'edit_information'
