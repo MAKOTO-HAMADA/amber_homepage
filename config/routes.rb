@@ -16,11 +16,11 @@ Rails.application.routes.draw do
     resources :orders,          only: [:show, :update] do
       resources :order_histories, only: [:update]
     end
-    resources :contacts,        only: [:index, :show]
-    resources :contact_genres,  only: [:index, :create, :edit, :update]
+    resources :contacts,        only: [:index, :show, :destroy]
+    resources :contact_genres,  only: [:index, :create, :edit, :update, :destroy]
     resources :customers,       only: [:index, :show, :edit, :update]
-    resources :items,           except: [:destroy]
-    resources :item_genres,     only: [:index, :create, :edit]
+    resources :items
+    resources :item_genres,     only: [:index, :create, :edit, :destroy]
     patch 'item_genres/:id/edit' => 'item_genres#update', as: 'edit_item_genre'
   end
   

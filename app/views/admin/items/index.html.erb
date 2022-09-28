@@ -15,6 +15,7 @@
                     <th>税抜価格</th>
                     <th>ジャンル</th>
                     <th>ステータス</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,8 @@
                         <td><%= item.price %></td>
                         <td><%= item.item_genre.name %></td>
                         <td><%= item.sales_status ? "販売中" : "販売停止中" %></td>
+                        <td>
+                            <%= link_to "削除", admin_item_path(item.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-sm rounded-pill' %>
                     </tr>
                 <% end %>
             </tbody>

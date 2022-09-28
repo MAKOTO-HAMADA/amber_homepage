@@ -13,5 +13,13 @@ class Item < ApplicationRecord
     validates :name,         presence: true
     validates :introduction, presence: true
     validates :price,        presence: true
+    
+    def image_view
+        if self.image.attached?
+            self.image
+        else
+            'no_image'
+        end
+    end
 
 end

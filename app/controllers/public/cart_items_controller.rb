@@ -6,6 +6,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items = CartItem.all
     @total_price = 0
   end
+  # @total_priceは、ビュー内で += で値を足していく為初期値を0にしている
   
   def create
     cart_item = CartItem.find_by(item_id: cart_item_params[:item_id])
