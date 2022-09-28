@@ -34,18 +34,22 @@
                 <p class="h3  mb-4">ジャンル一覧</p>
                 <table class="table table-bordered">
                     <thead class="thead-dark">
-                        <th width="13%">ジャンル<br/>ＩＤ</th>
+                        <th width="13%">ＩＤ</th>
                         <th width="25%">ジャンル名</th>
                         <th>説明</th>
-                        <th width="15%"></th>
+                        <th width="11%"></th>
+                        <th width="11%"></th>
                     </thead>
-                    <% @item_genres.each do |item_genre| %>
+                    <% @item_genres.each do |genre| %>
                         <tbody>
-                            <td><%= item_genre.id %></td>
-                            <td><%= item_genre.name %></td>
-                            <td><%= item_genre.introduction %></td>
+                            <td><%= genre.id %></td>
+                            <td><%= genre.name %></td>
+                            <td><%= genre.introduction %></td>
                             <td class="text-center">
-                                <%= link_to "編集", edit_admin_item_genre_path(item_genre.id), class: 'btn btn-secondary' %>
+                                <%= link_to "編集", edit_admin_item_genre_path(genre.id), class: 'btn btn-sm btn-secondary' %>
+                            </td>
+                            <td class="text-center">
+                                <%= link_to "削除", admin_item_genre_path(genre.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-sm btn-danger rounded-pill' %>
                             </td>
                         </tbody>
                     <% end %>

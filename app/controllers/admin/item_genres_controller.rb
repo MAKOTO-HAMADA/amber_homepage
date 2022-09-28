@@ -21,6 +21,12 @@ class Admin::ItemGenresController < ApplicationController
     @item_genre = ItemGenre.find(params[:id])
   end
   
+  def destroy
+    genre = ItemGenre.find(params[:id])
+    genre.destroy
+    redirect_to admin_item_genres_path
+  end
+  
   def update
     @item_genre = ItemGenre.find(params[:id])
     if @item_genre.update(item_genre_params)

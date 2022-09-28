@@ -21,6 +21,12 @@ class Admin::ContactGenresController < ApplicationController
     @contact_genre = ContactGenre.find(params[:id])
   end
   
+  def destroy
+    genre = ContactGenre.find(params[:id])
+    genre.destroy
+    redirect_to admin_contact_genres_path
+  end
+  
   def update
     @contact_genre = ContactGenre.find(params[:id])
     if @contact_genre.update(contact_genre_params)
