@@ -11,7 +11,7 @@
         <div class="col">
             <table class="table table-striped">
                 <tr>
-                    <th>日時</th>
+                    <th width="25%">日時</th>
                     <td><%= l @contact.created_at, format: :short %></td>
                 </tr>
                 <tr>
@@ -29,6 +29,10 @@
                 <tr>
                     <th>問合せジャンル</th>
                     <td><%= @contact.contact_genre.name %></td>
+                </tr>
+                <tr>
+                    <th>本文の感情分析スコア</th>
+                    <td><%= @contact.score %></td>
                 </tr>
             </table>
         </div>

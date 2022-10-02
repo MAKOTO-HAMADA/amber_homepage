@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_203252) do
+ActiveRecord::Schema.define(version: 2022_10_02_072725) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_203252) do
     t.text "inquiry", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["contact_genre_id"], name: "index_contacts_on_contact_genre_id"
     t.index ["customer_id"], name: "index_contacts_on_customer_id"
   end

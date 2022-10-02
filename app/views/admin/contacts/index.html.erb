@@ -14,6 +14,7 @@
                         <th>問合せＩＤ</th>
                         <th>問合せ氏名</th>
                         <th>問合せジャンル</th>
+                        <th>本文の感情分析スコア</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +22,8 @@
                         <tr>
                             <td><%= contact.id %></td>
                             <td><%= link_to contact.name, admin_contact_path(contact.id) %></td>
-                            <td><%= contact.contact_genre.name%></td>
+                            <td><%= contact.contact_genre.name %></td>
+                            <td><%= contact.score %></td>
                         </tr>
                     <% end %>
                 </tbody>
