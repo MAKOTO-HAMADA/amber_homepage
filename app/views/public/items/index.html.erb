@@ -4,13 +4,13 @@
     
     <div class="row mb-5">
         
-        <!-- 左_ジャンル検索作成予定 -->
-        <div class="col-2">
+        <!-- 左_ジャンル検索 -->
+        <div class="col-lg-2 d-none d-lg-block">
             <%= render'layouts/sidebar', item_genres: @item_genres %>
         </div>
         
-        <!-- 右_商品一覧-->
-        <div class="col-10">
+        <!-- 右_商品一覧 -->
+        <div class="col-lg-10 col-12">
             <div class="row">
                 <% @items.each do |item| %>
                     <div class="col-md-6 col-lg-4 mb-5">

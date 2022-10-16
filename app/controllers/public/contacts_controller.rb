@@ -19,7 +19,8 @@ class Public::ContactsController < ApplicationController
   
   def create
     contact = Contact.new(contact_params)
-    contact.score = Language.get_data(contact_params[:inquiry]) # NaturalLanguageAPIを使用
+    # NaturalLanguageAPIを使用
+    contact.score = Language.get_data(contact_params[:inquiry])
     contact.save
     redirect_to contacts_complete_path
   end

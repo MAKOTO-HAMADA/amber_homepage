@@ -24,7 +24,7 @@
         </button>
         
         <!-- [表示切り替えボタン]の内容 -->
-        <div class="collapse navbar-collapse ml-3 mt-3" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse ml-3 mt-3 text-truncate" id="navbarSupportedContent">
           
           <!-- 各種リンク -->
           <% if customer_signed_in? %>
@@ -93,7 +93,7 @@
           <% end %>
           
           <!-- 検索フォーム -->
-          <div class="form-inline my-2 my-lg-0">
+          <div class="form-inline my-2 my-lg-0 text-truncate">
             <%= search_form_for @q, url: search_items_path, class:"search-form" do |f| %>
               <%= f.search_field :name_cont, class:'form-control mr-sm-2', placeholder: '商品名を検索' %>
               <%= button_tag type: 'submit', class:"btn btn-dark my-2 my-sm-0" do %>
@@ -101,6 +101,8 @@
               <% end %>
             <% end %>
           </div>
+          
+        </div>
         
       </nav>
       

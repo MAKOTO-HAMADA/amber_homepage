@@ -5,12 +5,12 @@
     <div class="row mb-5">
         
         <!-- 左_ジャンル検索作成予定 -->
-        <div class="col-2">
+        <div class="col-lg-2 d-none d-lg-block">
             <%= render "layouts/sidebar", item_genres: @item_genres %>
         </div>
         
         <!-- 右_商品一覧-->
-        <div class="col-10">
+        <div class="col-lg-10 col-12">
             <% if @q.name_cont != nil %>
               <div class="h3 font-weight-bold mb-3"><%= "[ #{@q.name_cont} ] の検索結果" %></div>
               <div class="row">

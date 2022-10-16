@@ -10,17 +10,17 @@
         <%= render 'layouts/error_messages', resource: @cart_item %>
         
         <!-- 左_ジャンル検索作成予定 -->
-        <div class="col-2">
+        <div class="col-lg-2 d-none d-lg-block">
             <%= render'layouts/sidebar', item_genres: @item_genres %>
         </div>
         
         <!-- 右_商品一覧-->
-        <div class="col-10">
+        <div class="col-lg-10 col-12">
             <div class="row">
-                <div class="col-5">
+                <div class="col-lg-5 mb-3">
                     <%= image_tag @item.image, class: 'autosizing-image rounded shadow' %>
                 </div>
-                <div class="col-7 d-flex flex-column">
+                <div class="col-lg-7">
                     <div class="h4"><%= @item.introduction %></div>
                     <div class="h1">¥<%= @item.add_tax_price %></div>
                     
