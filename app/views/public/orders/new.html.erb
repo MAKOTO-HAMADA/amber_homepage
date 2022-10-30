@@ -3,9 +3,7 @@
         
         <div style="width:740px;">
             <!-- タイトル -->
-            <div class="mb-3 display-3 font-weight-bold">
-                注文情報入力
-            </div>
+            <div class="mb-3 display-3 font-weight-bold">注文情報入力</div>
             
             <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
                 <!--［支払方法］　をラジオボタン -->

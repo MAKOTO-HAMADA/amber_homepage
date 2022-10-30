@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   
   before_action :authenticate_customer!
+  before_action :back_to_previous_page
   
   def new
     @order = Order.new
@@ -50,6 +51,19 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+  
+  # back_to_previous_page：カートが空の場合order/newへ遷移せずcart/indexに戻すメソッド
+  def back_to_previous_page
+    x = 0
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items.each do |cart_item|
+      x += cart_item.quantity_by_type
+    end
+    if x == 0
+      flash[:notice] = "カートの商品を入れてください。"
+      redirect_back(fallback_location: root_path)
+    end
   end
   
   private
