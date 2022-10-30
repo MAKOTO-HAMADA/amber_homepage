@@ -11,13 +11,23 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    # ご自身の住所
     if params[:select_address] == '0'
       @order.get_shipping_informations_from(current_customer)
+    # 登録先住所選択
     elsif params[:select_address] == '1'
-      @shipping_address = ShippingAddress.find(params[:adress_id])
+      @shipping_address = ShippingAddress.find_by(params[:adress_id])
+      if @shipping_address == nil
+        flash[:notice] = "＜登録済住所＞がない為、＜マイページ＞より登録をお願いします。"
+        redirect_back(fallback_location: root_path)
+      end
       @order.get_shipping_informations_from(@shipping_address)
+    # 新しいお届け先
     elsif params[:select_address] == '2'
-      # 新規入力
+      if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
+        flash[:notice] = "＜新しいお届け先＞に記入が足りない箇所があります。"
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
   ## 自作メソッド
